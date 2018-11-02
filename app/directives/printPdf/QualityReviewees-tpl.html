@@ -1,0 +1,48 @@
+﻿<!--title-->
+<div class="row">
+    <div align="left" class="col-md-10  col-xs-10"><h3 class="print-selection-heading">Quality reviewer <span ng-if="qualityReport.qualityReportID==14">compare</span> report</h3></div>
+    <div align="right" class="col-md-2  col-xs-2 style-cursor-pointer" ng-click="closeQualityPrintPopup('xbutton')"><b>X</b></div>
+</div>
+<!--Report Options-->
+<br />
+
+<div class="row feedback-print-header">
+    <div align="left" class="col-md-12  col-xs-12">
+        <div class="col-md-1 col-xs-1">
+            &nbsp;<input id="check_All" type="checkbox" ng-model="isAllSelected" class="checkbox-custom" ng-change="selectAllQualityRevieweesForPrint(isAllSelected)"/>
+            <label for="check_All" class="checkbox-custom-label print-all-chk"></label> 
+        </div>
+        <!-- show Name only for the first rcord -->
+        <div class="col-md-11 col-xs-10">
+            Name
+        </div>
+    </div>
+    
+</div>
+<!-- Selections to print -->
+<div class="row selection-to-print">
+    <div ng-repeat="reviewees in qualityRevieweesForPrint"  class="row border-line">
+        <div class="col-md-12  col-xs-12 print-each-row" ng-init="chk_id=$index" align="left">
+                    
+            <div class="col-md-1 col-xs-1">
+                &nbsp;<input id="check_{{chk_id}}" type="checkbox" name="qrevieweesChkbox" ng-model="reviewees.isSelected"  class="checkbox-custom" />
+                <label for="check_{{chk_id}}" class="checkbox-custom-label"></label> 
+            </div>
+            <!-- show Name only for the first rcord -->
+            <div class="col-md-11 col-xs-11">
+                <span>{{reviewees.Name}}</span>
+                
+            </div>
+
+        </div>
+        
+    </div>
+        
+    
+</div>
+<br />
+<div class="row" id="buttonsRow">
+    <span class="lead-base-button grey" ng-click="closeQualityPrintPopup('cancelbutton')">Cancel</span><span class="button-spacing"></span>
+    <span ng-if="qualityReport.qualityReportID==13" class="lead-base-button yellow {{disableQualityPrint()?'disabled cursor-disabled':''}}" ng-click="printQualityReviewees()">Print PDF</span>
+    <span ng-if="qualityReport.qualityReportID==14" class="lead-base-button yellow {{disableQualityPrint()?'disabled cursor-disabled':''}}" ng-click="printQualityReviewees()">Export to Excel</span>
+</div>

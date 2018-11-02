@@ -1,0 +1,54 @@
+{
+  "welcomeFile": "/index.html",
+  "routes": [
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/odata/v2/",
+      "target": {
+        "type": "destination",
+        "name": "sap_hcmcloud_core_odata"
+      },
+      "description": "SuccessFactors Core OData API"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/sap_hcmcloud_core_odata",
+      "target": {
+        "type": "destination",
+        "name": "sap_hcmcloud_core_odata"
+      },
+      "description": "SuccessFactors Core OData API"
+    },
+    {
+    	"path": "/services/userapi",
+      "target": {
+        "type": "service",
+        "name": "userapi"
+      }
+    },
+    {
+    	"path": "/eygjava",
+      "target": {
+        "type": "destination",
+        "name": "eygjava"
+      }
+    }
+  ],
+  "sendWelcomeFileRedirect": true
+}

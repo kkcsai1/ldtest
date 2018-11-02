@@ -1,0 +1,27 @@
+{
+  "translation": {
+    "translationDomain": "",
+    "supportedLanguages": "",
+    "defaultLanguage": "",
+    "defaultI18NPropertyFile": "",
+    "resourceModelName": ""
+  },
+  "generation": [
+    {
+      "templateId": "servicecatalog.connectivityComponent",
+      "templateVersion": "0.0.0",
+      "dateTimeStamp": "Mon, 25 Sep 2017 08:34:19 GMT"
+    }
+  ],
+  "mockpreview": {
+    "mockUri": "/sap_hcmcloud_core_odata/odata/v2",
+    "metadataFilePath": "",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false,
+    "mockRequestsFilePath": ""
+  },
+  "hybrid": {
+    "backendDestination": "sf_odata"
+  }
+  
+}

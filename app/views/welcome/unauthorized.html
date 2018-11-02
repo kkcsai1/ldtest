@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div class="block-content-main" > <!--ng-if="!session.userModel.isContractor"-->
+        <div class="row">
+            
+            <div>
+                <p class="server-error-msg server-error-rerular" ng-bind-html="message"></p>
+            </div>            
+        </div>
+    </div>
+    <div class="block-content-main" ng-if="session.userModel.isContractor">
+        <div class="row">
+            
+            <div>
+                <p class="server-error-msg server-error-rerular" ng-bind-html="message"></p>
+            </div>
+            <div>
+            	
+                <p class="server-error-msg server-error-italic">Thank you.</p>
+            </div>
+        </div>
+    </div>
+</div>

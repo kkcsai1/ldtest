@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LEAD</title>
+    <meta name="description" content="">
+    
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="./content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="./bower_components/html5-boilerplate/dist/css/main.css">
+    <link href="./app/components/multiSlider/multislider.css" rel="stylesheet" />
+    <link href="./content/css/lead.css" rel="stylesheet" />
+    <!--<link href="./app/views/admin/admin.css" rel="stylesheet" />-->
+    <link href="./content/angular-popover.css" rel="stylesheet" />
+    <link href="./app/views/dashboard/dashboard.css" rel="stylesheet" />
+    <!--<link href="./app/views/feedback/feedback.css" rel="stylesheet" />
+    <link href="./app/views/goals/goals.css" rel="stylesheet" />
+    <link href="./app/views/home/home.css" rel="stylesheet" />
+    <link href="./app/views/leadReviewer/lead-reviewer.css" rel="stylesheet" />-->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel='stylesheet' type='text/css'>
+    <link href="./content/css/print.css" rel="stylesheet" />
+
+    
+    <script src="./scripts/min/jquery-1.9.1.min.js"></script>
+    <script src="./scripts/min/bootstrap.min.js"></script>
+    <script src="./scripts/min/angular.min.js"></script>
+    <script src="./scripts/min/angular-route.min.js"></script>
+    <script src="./scripts/min/angular-resource.min.js"></script>
+    <script src="./scripts/min/angular-touch.min.js"></script>
+    <script src="./scripts/min/angular-animate.min.js"></script>
+    <script src="./scripts/min/angular-sanitize.min.js"></script>
+    <script src="./scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="./scripts/min/angular-idle.min.js"></script>
+    <script src="./scripts/min/angular-popover.min.js"></script>
+    <script src="./bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="./scripts/lead.js"></script>
+    <script src="./scripts/min/ng-jsonpath.min.js"></script>
+    <script src="./scripts/angular-filter.min.js"></script>
+    <script type='text/javascript' src="./scripts/aes.js"></script>
+	<script type='text/javascript' src="./scripts/mdo-angular-cryptography.js"></script>
+	<!-- adal starts here -->
+	<script src="./scripts/adal.js"></script>
+	<script src="./scripts/adal-angular.js"></script>
+	<!-- adal ends here -->
+    <script type="text/javascript">
+	var appServiceURL = "https://lead-app.eyua.net";
+    </script>
+</head>
+<body ng-controller="HomeCtrl" class="{{overlay? 'overflow':''}}">
+
+  
+    <div ng-show="showspinner">
+        <!-- SSO spinning  -->
+        <div id="spinnerLaunch" class="loading">Loading&#8230;</div>
+       
+        <div id="spinner" class="loading" style="display:none">Loading&#8230;</div>
+    </div>
+
+
+
+
+    <!--Navigation Bar-->
+    <!--<nav ng-controller="HomeCtrl" class="navbar navbar-default navbar-fixed-top global-header  ng-cloak" role="navigation" ng-hide="sessionTimedOut">-->
+    <nav class="navbar navbar-default navbar-fixed-top global-header  ng-cloak" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button id="main-menu-ham-button" type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed" style="margin-right:0" ng:class="{true:'collapsed', false:'expanded'}[isCollapsed]">
+                    <img src="content/images/st.08.01.svg" />
+                </button>
+                <div class="ey-logo">
+                    <div class="lead-text">LEAD</div>
+                    <div class="lead-logo"><img src="content/icons/EY_logo_img.png" /></div>
+                </div>
+                <div class="lead-logo-mobile"><img src="content/icons/EY_logo_img.png" /></div>
+            </div>
+            <div class="navbar-collapse ng-cloak" id="main-menu" click-outside="closeThis()" outside-if-not="main-menu-ham-button" ng-class="isCollapsed ? 'collapse' : 'in'">
+                <ul class="nav navbar-nav" ng-hide="sessionTimedOut">
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div ng-show="showView">
+        <div ng-view class="view-container"></div>
+        <div id="overlay" ng-show="overlay"></div>
+       
+    </div>
+
+    <!--Popup to show when session is about to timeout-->
+    <div ng-if="showSessionTimeout" class="goals-confirmation popup-center ng-cloak">
+        <div class="row">
+            <div class="col-md-6  col-xs-6 goals-confirmation-heading" align="left"><b>Attention</b></div>
+            <div class="col-md-6  col-xs-6" align="right"><span class="popup-close-bottom" ng-click="closeSessionTimeoutWarning()">X</span></div>
+        </div>
+        <div class="modal-header">
+            <h3>Your session is going to time out...</h3>
+        </div>
+        <div idle-countdown="countdown" ng-init="countdown=60" class="modal-body">
+            <progressbar max="5" value="5" animate="false" class="progress-striped active">You'll be logged out in {{countdown}} second(s).</progressbar>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        var LEAD_Version = "01";
+    </script>
+     <script src="app.js"></script>
+    <script src="./app/common/authorizationService.js"></script>
+    <script src="./app/controllers/welcome/welcome.js"></script>
+    <script src="./app/controllers/welcome/welcomeCtrl.js"></script>
+    <script src="./app/controllers/welcome/ServerErrorCtrl.js"></script>
+    <script src="./app/controllers/welcome/UserErrorCtrl.js"></script>
+    <script src="./app/controllers/welcome/unauthorizedAccessCtrlr.js"></script>
+    <script src="./app/services/appConfig.js"></script>
+    <script src="./app/services/appConstants.js"></script>
+    <script src="./app/services/appMessages.js"></script>
+    <script src="./app/services/appCommon.js"></script>
+    <script src="./app/services/userModel.js"></script>
+    <script src="./app/services/sfDataService.js"></script>
+    <script src="./app/services/sfDashboardHeaderData.js"></script>
+    <script src="./app/services/sfDashboardData1.js"></script>
+    <script src="./app/services/sfDashboardData.js"></script>
+    <script src="./app/services/utilService.js"></script>
+    <script src="./app/services/connectivityService.js"></script>
+    <script src="./app/services/dashboardService.js"></script>
+    <script src="./app/services/sessionManagementService.js"></script> 
+    <!-- SSO and other script files -->
+    <script src="./app/controllers/logout/logout.js"></script>
+    <script src="./app/controllers/logout/idleController.js"></script>
+    <script src="./app/controllers/home/home.js"></script>
+    <script src="./app/controllers/home/HomeCtrl.js"></script>
+    <script src="./app/controllers/dashboard/dashboard.js"></script>
+    <script src="./app/controllers/dashboard/dashboardCtrl.js"></script> 
+    <script src="./app/controllers/dashboard/dashboardDataCtrl.js"></script> 
+    <script src="./app/controllers/dashboard/dashboardNonPPEDDDataSrCtrl.js"></script>
+    <script src="./app/controllers/dashboard/dashboardDetailCtrl.js"></script>
+    <script src="./app/controllers/dashboard/dashboardDetailDataCtrl.js"></script>
+    <script src="./app/controllers/dashboard/dashboardCommentsDataCtrl.js"></script>
+    <script src="./app/controllers/dashboard/dashboardDefinitionDataCtrl.js"></script>
+    <script src="./app/controllers/dashboard/dashboardLaunchDataCtr.js"></script>
+    <script src="./app/components/version/version.js"></script>
+    <script src="./app/components/version/version-directive.js"></script>
+    <script src="./app/components/version/interpolate-filter.js"></script> 
+    <script src="./app/components/multiSlider/multislider.js"></script>
+    <script src="./app/directives/partnerInfo/partnerInfo.js"></script>
+    <script src="./app/directives/partnerInfo/partnerInfoVariant.js"></script>
+    <script src="./app/directives/footer/footer.js"></script>
+    <script src="./app/directives/donut/donut.js"></script>  
+    <script src="./app/directives/dashboard/dashboard.js"></script>
+    <script src="./app/directives/dashboard/dashboard-nonppeddsr.js"></script>
+    <script src="./app/directives/dashboard/dashboardDetail.js"></script>
+    <script src="./app/directives/dashboard/dashBoardAccordion.js"></script>
+    <script src="./app/directives/dashboard/dashBoardCommentsNonPPEDD.js"></script>
+    <script src="./app/controllers/dashboard/dashboardQuantitativeDetailCtrl.js"></script>
+    
+    	<script src="../../resources/sap-ui-core.js" id="sap-ui-bootstrap"></script>
+    
+    		<!-- Section for service binding -->
+    		<script src="serviceBinding.js"></script>
+    		<script>
+    			var oModel;
+    			var userApiModel;
+    			initModel();
+    		</script>
+
+	<!-- added for security- to disable iFrame - Ravi R  -- Do not comment
+	<script id='sap-ui-bootstrap'
+    src='resources/sap-ui-core.js'
+    data-sap-ui-frameOptions='deny'>
+	</script>
+	added for security -Ravi R --> 
+
+</body>
+</html>

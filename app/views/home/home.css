@@ -1,0 +1,728 @@
+.homeContainer {
+    position: relative;
+}
+
+.hero {
+    background: url("../../../content/images/high-res/lights-image.jpg") no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    background-size: cover;
+    height: 500px;
+    padding-top: 21.875%;
+    background-position: center center;
+    margin-top: -1px;
+}
+
+
+.lead-board {
+    width: 400px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 45px;
+    background-color: rgba(49, 44, 40, 0.53);
+    height: 400px;
+    margin: auto;
+}
+.lead-board-left-spacing{
+    left: 15px;
+    position: absolute;
+    top: 145px;
+}
+.lead-board-heading {
+    color: #FFF;
+    font-size: 250%;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+
+.lead-board-description {
+    color: #FFF;
+    font-size: 12px;
+}
+
+.lead-board-partner-info {
+    margin-top: 50px;
+    color: #FFF;
+}
+
+.lead-board-partner-info .name {
+    font-weight: bold;
+}
+
+.lead-text{
+    margin-bottom: 22px;
+    color: #c0c0c0;
+}
+.explore-gold-standard {
+    height: 550px;
+    text-align: center;
+    position: relative;
+}
+
+.explore-gold-standard-bg {
+    background: url("../../../content/images/high-res/drone-image.jpg") no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    background-size: cover;
+    height: 570px;
+    padding-top: 60px;
+    background-position: center center;
+    position: relative;
+}
+
+.explore-gold-standard-padding {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+}
+
+.monitor-your-performance {
+    height: 550px;
+    background-color: #333;
+    color: #FFF;
+    position: relative;
+}
+
+.explore-gold-standard-heading {
+    font-size: 36px;
+    padding-top: 25px;
+    color: #333;
+}
+
+.explore-gold-standard-measure {
+    font-weight: bold;
+    font-size: 18px
+    color:#333;
+}
+
+.explore-gold-standard-content {
+    margin-top: 20px;
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height:25px;
+    margin-top:50px;
+}
+
+.explore-gold-standard-content-button {
+    background: #FFF;
+    border: 1px #333 solid;
+    padding: 8px;
+    margin-top: 30px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #888;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    bottom: 30px;
+    width: 160px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.monitor-your-performance-button {
+    background: rgba(255, 255, 255, 0);
+    border: 1px #FFF solid;
+    padding: 8px;
+    margin-top: 30px;
+    padding-right: 25px;
+    padding-left: 25px;
+    color: #FFF;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    bottom: 30px;
+    width: 155px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.feedback-is-key-button {
+    background: rgba(255, 255, 255, 0);
+    border: 1px #333 solid;
+    padding: 8px;
+    margin-top: 0px;
+    padding-right: 25px;
+    padding-left: 25px;
+    color: #000;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    bottom: 30px;
+    width: 155px;
+    font-size: 16px;
+     cursor: pointer;
+}
+
+.monitor-your-performance-content {
+    margin-top: 20px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height:25px;
+    margin-top:50px;
+}
+
+.monitor-your-performance-heading {
+    font-size: 36px;
+    padding-top: 25px;
+}
+
+.feedback-is-key-bg {
+    background: url("../../../content/images/high-res/office-image.jpg") no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    background-size: cover;
+    height: 500px;
+    padding-top: 100px;
+    background-position: center center;
+}
+
+.feedback-is-key-bg-overlay {
+    background-color: rgba(255, 255, 255, 0.57);
+    width: 600px;
+    text-align: center;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    height: 360px;
+    display:none;
+}
+
+.feedback-is-key-heading {
+    color: #333;
+    font-size: 36px;
+    margin-top: 15px;
+    height: 100px;
+}
+
+.feedback-is-key-content {
+    padding: 40px;
+    padding-top: 4px;
+}
+
+.col-lg-4 {
+    background-color: #333;
+    color: #FFF;
+    padding: 25px;
+    width: 280px;
+    height: 520px;
+    margin: 10px;
+}
+
+.col-lg-4 h2{
+ font-size: 25px;
+}
+
+.partner-image {
+    float: left;
+}
+
+lead-board .partner-image img {
+    width: 70px;
+}
+
+.partner-data-info-outer {
+    float: left;
+    margin-left: 20px;
+    width: 100%;
+}
+
+.lead-board-partner-info {
+    position: absolute;
+    width: 80%;
+}
+
+.partner-data-info-outer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    left: 70px;
+}
+
+.partner-data-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.partner-data-extra {
+    font-size: 16px;
+}
+
+.mobile-screen-block {
+    display: none;
+    width: 300px;
+    position: absolute;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 12px;
+    height: 400px;
+    margin: auto;
+}
+
+.wide-screen-block {
+    display: block;
+    width: 900px;
+    position: absolute;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 15px;
+    height: 400px;
+    margin: auto;
+}
+
+.monitor-your-performance-padding {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+}
+.explore-icon{
+    text-align: center;
+    padding: 25px;
+    height: 95px;
+}
+
+.gold-icon{
+    text-align: center;
+    padding: 10px;
+}
+
+
+.monitor-icon{
+    text-align: center;
+    padding: 10px;
+}
+.explore-gold-points{
+    margin: 0px;
+    padding: 0px;
+    margin-top: 14px;
+    position: absolute;
+    /* bottom: 10px; */
+    padding-right: 12px;
+    margin-left: -6px;
+}
+.explore-gold-points li{
+    list-style: none;
+    padding: 6px;
+}
+.footer-bg {
+        height: 400px;
+        background-color: #333;
+        padding: 30px;
+        color: #FFF;
+        padding-top: 70px;
+        font-size: 12px;
+}
+.lead-board-ey-logo-mobile{
+        display: none;
+}
+ .admin-menu{
+        float: left;
+        margin-right: 12px;
+}
+ .admin-menu-separator{
+     padding-left:12px;
+     display:none;
+ }
+.block-heading{
+    font-size: 18px;
+}
+
+/* Privacy */
+.privacyContainer, .privacyDetailContainer{
+    position: relative;
+    max-width:1024px;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+.privacy-block{
+    height:300px;
+    border:1px #7f7b7b solid;
+    padding:30px;
+    overflow-y: scroll;
+    line-height:22px;
+}
+
+.privacy-checkbox {
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+.privacy span{
+    display:block;
+    float:left;
+    height:30px;
+    margin-left:10px;
+}
+
+.privacy-checkbox-input{
+    float:left;
+}
+
+.privacy-checkbox-text{
+    float:left;
+    margin-left: 10px;
+    margin-top: 1px;
+}
+
+.privacy.message span:nth-child(2) {
+    width: 90%;
+    margin-left:10px;
+}
+
+.privacy-download{
+    margin-top:5px;
+    margin-bottom:5px;
+    color:#336699;
+}
+
+.privacy-checkbox input{
+    vertical-align:top!important;
+    margin-top:2px;
+}
+
+.privacy-download{
+    cursor:pointer;
+}
+
+.privacy-first-level > li {
+    list-style:none;
+    margin-bottom:10px;
+}
+
+.privacy-second-level > li {
+    list-style:none;
+}
+
+.privacy-second-level{
+    padding-left:20px;
+}
+
+.privacy-second-level li{
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+
+.privacy-first-level{
+    padding-left:0px;
+    margin-left:0px;
+    font-size:13px;
+}
+
+.message.privacy{
+    width:100%;
+    background-color:#fbd2ce;
+    border:1px #f37468 solid;
+    margin-top:18px;
+    
+}
+.privacyDetailContainer .privacy-block{
+    height:auto;
+    border:0px;
+    overflow:hidden;
+}
+.pdf-icon{
+    background-image:url("../../../content/images/pdf.png");
+}
+.download-bar{
+    float:right;
+}
+.download-bar .pdf-icon{
+    width: 20px;
+    height: 23px;
+    float: left;
+}
+.download-bar .pdf-link{
+    float: left;
+    margin-top: 5px;
+}
+
+@media (max-width: 767px) {
+   
+    .hero {
+        height: 700px;
+        background: url("../../../content/images/768/lights-image.jpg") no-repeat;
+        background-size: 100% 100%;
+        width: 100%;
+        background-size: cover;
+        padding-top: 21.875%;
+        background-position: center center;
+        margin-top: -1px;
+    }
+    .explore-gold-standard-bg {
+        background: url("../../../content/images/768/drone-image.jpg") no-repeat;
+        background-size: 100% 100%;
+        width: 100%;
+        background-size: cover;
+        height: 550px;
+        padding-top: 60px;
+        background-position: center center;
+        position: relative;
+    }
+    .feedback-is-key-bg {
+        /*background: url("../../../content/images/768/office-image.jpg") no-repeat;*/
+        background-size: 100% 100%;
+        width: 100%;
+        background-size: cover;
+        height: 500px;
+        padding-top: 100px;
+        background-position: center center;
+    }
+    .lead-board-ey-logo-mobile{
+        display: block;
+        margin-bottom: 15px;
+    }
+    .lead-board-ey-logo-mobile img{
+        height: 75px;
+    }
+    .lead-board-heading {
+        font-size: 350%;
+    }
+    .lead-board {
+        top: 0px!important;
+        width: 100%;
+        height: 700px;
+    }
+    .lead-board-description {
+        width: 260px;
+        font-size: 18px;
+    }
+    .explore-gold-standard {
+        height: 600px;
+    }
+    .explore-gold-standard-bg {
+        height: 700px;
+    }
+    .monitor-your-performance {
+        height: 700px;
+    }
+    .feedback-is-key-bg {
+        height: 700px;
+    }
+    .footer-bg {
+        height: 600px;
+        background-color: #484848;
+    }
+    .ey-logo {
+        position: absolute;
+        left: 15px;
+        top: 105px;
+    }
+    .ey-logo img {
+        height: 75px;
+    }
+    .mobile-screen-block {
+        display: block;
+    }
+    .wide-screen-block {
+        display: none;
+    }
+    .feedback-is-key-bg-overlay {
+        height: 523px;
+        width: 100%;
+    }
+    .feedback-is-key-content {
+       padding: 50px;
+       padding-top: 0px;
+    }
+    .explore-gold-standard-heading {
+        font-size: 23px;
+    }
+    .explore-gold-standard {
+        position: relative;
+    }
+    .monitor-your-performance-heading {
+        font-size: 23px;
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+    .feedback-is-key-heading {
+        color: #000;
+        font-size: 23px;
+        margin-top: 45px;
+        height: 55px;
+    }
+    .col-lg-4{
+        height: 528px;
+    }
+    .explore-gold-standard-content{
+        width: 80%;
+    }
+    .monitor-your-performance-content{
+        width: 80%;
+    }
+    .carousel-indicators{
+        bottom: -107px;
+    }
+   
+    .feedback-is-key-bg{
+        padding-top: 46px;
+    }
+    .admin-menu{
+        display: none;
+    }
+    .carousel-indicators li{
+        width: 15px!important;
+        height: 15px!important;
+        background-color: #252525;
+        margin: 0px;
+    }
+    .carousel-indicators .active{
+        width: 15px!important;
+        height: 15px!important;
+        background-color: #9E9E9E;
+    }
+    .carousel-indicators{
+        bottom: -197px!important;
+    }
+    .top-bar-participant-name{
+        display: none;
+    }
+    .lead-board-left-spacing{
+        top: 100px;
+    }
+    .gold-icon img{
+        width:80%;
+    }
+    .privacy-block{
+        border:none;
+        height:auto;
+        overflow:hidden;
+        padding:20px;
+        line-height:22px;
+    }
+    .privacyContainer, .privacyDetailContainer {
+        width:100%;
+        padding: 0px;
+    }
+    .privacy-download {
+        position: absolute;
+        right: 10px;
+        top: 2px;
+    }
+    .privacy span{
+        height:auto;
+    }
+    .privacy-footer-wrapper{
+        padding:20px;
+        padding-top:0px;
+    }
+    .privacy-checkbox{
+        margin-top:0px;
+    }
+    .message.privacy{
+        width:92%;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin: auto;
+    }
+    .privacy.message span:nth-child(2){
+        width: 87%;
+    }
+    .logout-banner{
+        min-height: 50px;
+        height: 190px;
+    }
+    .logout-banner .lead-board{
+        display:none;
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+    .hero {
+        background: url("../../../content/images/1024/lights-image.jpg") no-repeat;
+        background-size: 100% 100%;
+        width: 100%;
+        background-size: cover;
+        height: 500px;
+        padding-top: 21.875%;
+        background-position: center center;
+        margin-top: -1px;
+    }
+    .explore-gold-standard-bg {
+        background: url("../../../content/images/1024/drone-image.jpg") no-repeat;
+        background-size: 100% 100%;
+        width: 100%;
+        background-size: cover;
+        height: 550px;
+        padding-top: 60px;
+        background-position: center center;
+        position: relative;
+    }
+    .feedback-is-key-bg {
+        background: url("../../../content/images/1024/office-image.jpg") no-repeat;
+        background-size: 100% 100%;
+        width: 100%;
+        background-size: cover;
+        height: 500px;
+        padding-top: 100px;
+        background-position: center center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .explore-gold-standard-content{
+        line-height:20px;
+        margin-top:20px;
+    }
+    .monitor-your-performance-content{
+        line-height:20px;
+        margin-top:20px;
+    }
+}
+
+@media (max-width: 1024px) {
+    
+    .dropdown-menu{
+        height: 400px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .mobile-screen-block {
+        display: block;
+    }
+    .wide-screen-block {
+        display: none;
+    }
+    .admin-menu{
+        display: none;
+    }
+    
+    .carousel-indicators li{
+        width: 15px!important;
+        height: 15px!important;
+        background-color: #252525;
+        margin: 0px;
+    }
+    .carousel-indicators .active{
+        width: 15px!important;
+        height: 15px!important;
+        background-color: #9E9E9E;
+    }
+    .carousel-indicators{
+        bottom: -145px;  
+    }
+}

@@ -1,0 +1,29 @@
+<div class="privacyContainer">
+    <div class="page-head">Privacy Notice</div>
+    
+    <div class="message error row text-size-12" ng-show="isError" style="">
+        <span class="glyphicon glyphicon-exclamation-sign"></span>
+        <span id="message_value text-size-12">{{errorMessage}}</span>
+    </div>
+
+    <div class="privacy-download row text-size-12 text-bold" align="right">
+        <div class="download-bar" align="right">
+            <div class="pdf-icon"></div>
+            <div class="pdf-link"><a target="_blank" href="../../../content/privacy_notice.pdf">Download</a></div>
+        </div>
+    </div>
+    <div class="privacy-block row">
+        <div ng-bind-html="privacyContent"></div>
+    </div>
+    <div class="privacy-footer-wrapper">
+        <div class="privacy-checkbox row text-size-12">
+            <div class="privacy-checkbox-input">
+                <input type="checkbox" id="privacy_check" class="checkbox-custom" ng-model="checkboxModel.checked" />
+                <label for="privacy_check" class="checkbox-custom-label"></label>
+            </div>
+            <div class="privacy-checkbox-text">I acknowledge the terms of the LEAD system privacy notes.</div>
+        </div>
+
+        <span class="lead-base-button grey" ng-click="declinePrivacy()">Decline</span>&nbsp;&nbsp;<span ng-show="checkboxModel.checked" class="lead-base-button yellow" ng-click="acceptPrivacy()">Accept</span>
+    </div>
+</div>

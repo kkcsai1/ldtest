@@ -1,0 +1,305 @@
+<div class="row">
+	    <div class="col-md-6">
+	    	<partner-Info show-extra="true"></partner-Info>
+	    </div>
+	     <div class="col-md-6" align="right">
+	    	<select class="lead-base-select year-drop-down" ng-model="selectedYear"  
+            	ng-options="year.value as year.displayName for year in yearDropDown" ng-change="onYearChange()">
+			 </select> 
+	    </div>
+    </div>
+    <br>
+    <div class="page-content">
+
+    <div ng-if="spinnerCounter>0">
+        <div id="spinnerLaunch" class="loading">Loading&#8230;</div>
+        <div id="spinner" class="loading" style="display:none">Loading&#8230;</div>
+    </div>
+    <div class="row cls-margin-bottom-10">
+        <div class="col-md-8 ">
+            <span class="metrics-quantitative-title">Your qualitative metrics</span>
+        </div>
+        <div ng-show="isDashboardPage" align="right" class="col-md-4 desktop-view-text hidden-md hidden-sm hidden-xs  print-icon-blue" ng-click="printDashboard()">
+        <!--<div ng-show="isDashboardPage" align="right" class="col-md-4 desktop-view-text hidden-md hidden-sm hidden-xs  print-icon-blue" angular-popover direction="top" template="Coming soon" style="position: relative;"  mode="click" close-on-mouseleave="true">-->
+            <span class="print-icon"></span>
+            <span class="style-cursor-pointer">Print</span>
+        </div>
+    </div>
+    <div class="dashboard-top-buttons row">
+        <div class="col-md-12 row" align="right">
+
+            <div style="position: relative;" class="dashboard-hide-buttons remove-border self-assessment-button row" ng-click="hideSelfAssessment()">
+                <span class="top-arrow-pointer-green">&nbsp;</span>
+                <span class="top-arrow-pointer-green shadow">&nbsp;</span>
+                <span>Self-assessment</span>
+            </div>
+
+            <div ng-show="!peerGroupEnable" class="dashboard-hide-buttons remove-border hide-peer-average-button row" angular-popover direction="top" template="Coming soon" style="position: relative;"  mode="click" close-on-mouseleave="true">
+                <span class="top-arrow-pointer-blue">&nbsp;</span>
+                <span class="top-arrow-pointer-blue shadow">&nbsp;</span>
+                <span>Peer average</span>
+            </div>
+            
+            <div ng-show="peerGroupEnable" class="dashboard-hide-buttons remove-border hide-peer-average-button row" ng-click="hidePeerAverage()">
+                <span class="top-arrow-pointer-blue">&nbsp;</span>
+                <span class="top-arrow-pointer-blue shadow">&nbsp;</span>
+                <span>Peer average</span>
+            </div>
+
+            <div  class="dashboard-hide-buttons remove-border ytd-progress-button row" ng-click="ytdProgress()">
+                <span class="top-arrow-pointer-black">&nbsp;</span>
+                <span class="top-arrow-pointer-black shadow">&nbsp;</span>
+                <!--<span><div align="left">Your YTD progress</div> <div align="left">or indicative assessment</div></span>-->
+                <span><div align="left">Your YTD progress</div></span>
+            </div>
+
+             <div class="dashboard-hide-buttons remove-border final-assessment row" ng-click="finalSelfAssessment()">
+                <span class="top-arrow-pointer-ash">&nbsp;</span>
+                <span class="top-arrow-pointer-black shadow">&nbsp;</span>
+                <span>Final Q&ERM rating</span>
+             </div>
+        </div>
+    </div>
+    <div class="row donut-container" ng-class="noData ? 'reduce-height' : ''">
+        <div class="col-md-4 donut-bottom-border" ng-repeat="data in dashboardData.Categories | orderBy: 'SortOrder'" ng-class="{dashboardBigger: data.isQuality == true}">
+        <!--<div class="col-md-4 donut-bottom-border" ng-repeat="data in dashboardData.Categories | unique: 'CategoryID' | orderBy: 'SortOrder'" ng-class="{dashboardBigger: data.isQuality == true}">-->
+            <div class="donut-block" ng-class="{staticQandRM: data.CategoryID == 99999}">
+            	<!--<div class="popover-touch" ng-if="data.isQuality==true" angular-popover direction="top" template="There are two scales to summarize performance against this metric. The scale is determined by your local practice and will be communicated locally" style="position: relative;"  mode="click" close-on-mouseleave="true"></div>-->
+                
+                <div ng-class="data.FinalAssessmentActual > 5 ? 'final-outside' : 'final-inside'">
+                	<donut ytdprogress="data.YTDProgress" PeerAverage="data.PeerAverage" selfassesment="data.SelfAssesment" finalassessment="data.FinalAssessment" enablegreyshade="data.enablegreyshade" formtype="data.formType"></donut>
+                </div>
+                
+                <div class="category-heading">{{data.CategoryName}} <span class="question-circle" type="button" ng-if="data.isQuality==true" angular-popover direction="top" template="There are two scales to summarize performance against this metric. The scale is determined by your local practice and will be communicated locally" style="position: relative;"  mode="click">?</span> </div>
+               <!--  <div class="category-divider"></div> -->
+               <div class="slider-height" ng-if="data.isQuality!=true">
+                <div  ng-repeat="goals in data.FbGoals | orderBy: 'SortOrder'">
+                    <div class="slider-row-heading">{{goals.GoalName}}</div>
+                    <div class="slider-row">
+                        <div multi-slider
+                             floor="0"
+                             ceiling="100"
+                             step="1"
+                             precision="2"
+                             bubbles="false"
+                             isdisabled=""
+                             ng-model="goals.sliderValue" ng-class=""></div>
+                    </div>
+                    
+                </div>
+                </div>
+               
+               <div ng-if="data.valueExistsCounter>0 && !data.isQuality" class="donut-detail-bottom" align="center">
+                	<div align="center" class="lead-base-button white dashboard-detail-button" ng-click="gotoDetailPage(data)">Details</div>
+                </div>
+                
+                <!--<div ng-if="data.CategoryID == 99999" class="donut-detail-bottom" align="center">-->
+                <!--	<div  angular-popover direction="top" template="No data present" style="position: relative;" mode="click" close-on-mouseleave="true" align="center" class="lead-base-button white dashboard-detail-button  no-left-pos">Details</div>-->
+                <!--</div>-->
+
+
+            </div>
+        </div>
+          <div class="no-mds-data row" ng-show="noData">
+                <div class="icon glyphicon glyphicon-info-sign"></div>
+                <div class="content">{{noData}}</div>
+            </div>
+        
+    </div>
+
+    <div ng-show="isDashboardPage || isReviewerPage || BU_LEADER">
+
+            <div class="metrics-quantitative-title">
+             Your quantitative metrics
+            </div>
+
+            <div>
+
+            <div ng-hide="isReviewerPage" class="metrics-quantitative-title-desc">
+                <span ng-show="!isNoDataMessageVisible">Visit <b><a ng-href="{{metricsURL}}" target="_blank">My Business: Metrics </a></b> for more details</span>
+            </div>
+
+            <div class="no-mds-data row" ng-show="isNoDataMessageVisible">
+                <div class="icon glyphicon glyphicon-info-sign"></div>
+                <div class="content">{{mbmDataMessage}}</div>
+            </div>
+            
+            <ul class="metric-accordian-outer">
+                <li ng-repeat="metricsData in dashboardMetricsData" id="{{metricsData.RoleType}}">
+                    <dashboard-Accordion serviceline="metricsData.ServiceLine" rolename="metricsData.RoleName" marketsegment="metricsData.MarketSegment" on-click="onAccordionClick()" open="metricsData.IsMax"></dashboard-Accordion>
+                    <div class="tree  donut-holder">
+                        <div class="row">
+                            <div class="col-md-12" align="right">
+                                <!--<div class="usd-in-thousands text-size-12">-->
+                                <!--     *USD in thousands -->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 donut-bottom-border">
+                            <div class="progress-block">
+                                    <div align="right" class="usd-in-thousands">*USD</div>
+                                    <div class="gter-no-data" ng-if="checkGlobalTER(metricsData)">
+                                        <div class="icon glyphicon glyphicon-info-sign"></div> 
+                                        <div class="content">No data available at this time. Please visit My Business: Metrics for more information.</div>
+                                    </div>
+                                    
+                                    <div ng-if="!checkGlobalTER(metricsData)">
+                                        <div class="metric-top-height">
+                                            <div class="progress-block-big-value" align="center">{{metricsData.GlobalTERUSDGlobal<0? "(":""}}{{metricsData.GlobalTERUSDGlobal | absNumberFormat}}{{metricsData.GlobalTERUSDGlobal<0? ")":""}}</div>
+                                        </div>
+                                        <div class="perc-bg-height">
+                                            <div class="perc-bg" align="left" ng-hide="globalTERPercentageBlock(metricsData)" >
+                                                <div class="act-perc" ng-style="metricsData.cssGlobalTERPlanAchievedPct">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress-block-value-text" align="center">
+                                            Global TER <span ng-hide="isGlobalTERPlanPctHidden(metricsData)">plan</span> 
+                                            <div align="center" ng-hide="isGlobalTERPlanPctHidden(metricsData)">{{metricsData.GlobalTERPlanUSDConst<0? "(":""}}{{metricsData.GlobalTERPlanUSDConst | absNumberFormat}}{{metricsData.GlobalTERPlanUSDConst<0? ")":""}}</div>
+                                            <div ng-show="isGlobalTERPlanPctHidden(metricsData)" class="question-circle" type="button" data-toggle="popover" data-placement="top" data-content="Plan data is not available in My Business: Metrics">?</div>
+                                        </div>
+
+
+                                    </div>
+									<div class="donut-detail-bottom" align="center" ng-click="gotoQuantitativeDetail(metricsData, 'ter')"><div align="center" class="lead-base-button white dashboard-detail-button">Details</div></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 donut-bottom-border">
+                                <div class="progress-block">
+                                	<div align="right" class="usd-in-thousands">&nbsp;</div>
+                                    <div class="metric-top-height">
+                                    	
+                                        <div class="progress-block-big-value" align="center" ng-hide="isGlobalMarginPctHide(metricsData)">{{metricsData.GlobalMarginPct}}</div>
+                                        </div>
+                                    	<div class="perc-bg-height">
+	                                        <div class="perc-bg" align="left" ng-hide="globalMarginPercentageBlock(metricsData)">
+	                                            <div class="act-perc" ng-style="metricsData.cssGlobalMarginPlanAchievedPct">
+	                                            </div>
+	                                        </div>
+                                        </div>
+                                        <div class="progress-block-value-text" align="center" >
+                                            Global margin <span ng-hide="isGlobalMarginPlanPctHidden(metricsData)">plan</span> 
+                                            <div align="center" ng-hide="isGlobalMarginPlanPctHidden(metricsData)">{{metricsData.GlobalMarginPlanPct}}</div>
+                                            <div ng-show="isGlobalMarginPlanPctHidden(metricsData)" class="question-circle" type="button" data-toggle="popover" data-placement="top" data-content="Plan data is not available in My Business: Metrics">?</div>
+                                        </div>
+                                        
+                                        
+                                        <div class="donut-detail-bottom" align="center" ng-click="gotoQuantitativeDetail(metricsData, 'margin')"><div align="center" class="lead-base-button white dashboard-detail-button">Details</div></div>
+                                       <!--<div class="donut-detail-bottom" align="center" ng-show="metricsData.RoleType=='EngagementPartner' && !isReviewerPage">-->
+                                       <!--	<div align="center" class="lead-base-button white dashboard-detail-button add-edit" ng-click="addPlan(metricsData)">{{metricsData.GlobalMarginPlanAchievedPct == null? 'Add plan':'Edit plan'}}</div>-->
+                                       <!--	</div>-->
+                                    </div>
+                            </div>
+                            <div class="col-md-4 donut-bottom-border">
+                                <div class="progress-block">
+                                    <div align="right" class="usd-in-thousands">*USD</div>
+                                    <div class="metric-top-height">
+                                        <div class="progress-block-big-value" ng-hide="isGlobalSalesUSDHide(metricsData)" align="center">{{metricsData.GlobalSalesUSDConst<0? "(":""}}{{metricsData.GlobalSalesUSDConst | absNumberFormat }}{{metricsData.GlobalSalesUSDConst<0? ")":""}}</div>
+                                        </div>
+                                      
+                                            <div class="perc-bg-height">
+                                                <div class="perc-bg" align="left" ng-if="!checkGlobalSales(metricsData)">
+                                                    <div class="act-perc" ng-style="metricsData.cssGlobalSalesPlanAchievedPct">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                    <div class="metric-top-height-bottom">
+                                        <div class="progress-block-value-text" align="center">
+                                            Global sales <span ng-hide="isGlobalSalesPlanPctHidden(metricsData)">plan</span>
+                                            <div align="center" ng-hide="isGlobalSalesPlanPctHidden(metricsData)">{{metricsData.GlobalSalesPlanUSDConst<0? "(":""}}{{metricsData.GlobalSalesPlanUSDConst  | absNumberFormat}}{{metricsData.GlobalSalesPlanUSDConst<0? ")":""}}</div>
+
+                                            <div ng-show="isGlobalSalesPlanPctHidden(metricsData)" class="question-circle" type="button" data-toggle="popover" data-placement="top" data-content="Plan data is not available in My Business: Metrics">?</div>
+                                        </div>
+                                    </div>
+
+                                    
+                                        <div class="progress-block-big-value g-sales" align="center" ng-hide="isGlobalPipelineHidden(metricsData)">{{metricsData.GlobalPipelineUSDConst<0? "(":""}}{{metricsData.GlobalPipelineUSDConst | absNumberFormat}}{{metricsData.GlobalPipelineUSDConst<0? ")":""}}</div>
+                                        <div class="progress-block-value-text" align="center">Weighted pipeline <div class="question-circle" type="button" data-toggle="popover" data-placement="top" data-content="Plan data is not available in My Business: Metrics">?</div></div>
+                                    
+                                        <div class="donut-detail-bottom" align="center" ng-click="gotoQuantitativeDetail(metricsData, 'sales')"><div align="center" class="lead-base-button white dashboard-detail-button">Details</div></div>
+                                        </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="ppedd-feedback row">
+        <br>
+            <div class="lead-title">Feedback</div>
+
+            <div class="col-md-4"></div>
+            <div class="col-md-4 feedback-padding">
+                
+                <div>As feedback requester</div>
+
+                <div class="row feedback-status">
+                    <div class="col-md-10">Requested</div>
+                    <div class="col-md-2" align="right"><b>{{feedbackRequestedCount}}</b></div>
+                </div>
+                <div class="row feedback-status">
+                    <div class="col-md-10">Received</div>
+                    <div class="col-md-2" align="right"><b>{{feedbackReceivedCount}}</b></div>
+                </div>
+                <div class="row feedback-status">
+                    <div class="col-md-10">Declined</div>
+                    <div class="col-md-2" align="right"><b>{{feedbackRequesterDeclinedCount}}</b></div>
+                </div>
+               <!-- <div class="row feedback-status">
+                    <div class="col-md-10">Declined</div>
+                    <div class="col-md-2" align="right"><b>10</b></div>
+                </div> -->
+
+            </div>
+    <!--        <div class="col-md-4 feedback-padding">-->
+                    
+    <!--            <div>As feedback provider</div>-->
+				
+				<!--<div class="as-feedback-provider-ppedd coming-soon">Coming soon</div>-->
+		
+                <!--<div class="row feedback-status">-->
+                <!--    <div class="col-md-10">Requested</div>-->
+                <!--    <div class="col-md-2" align="right"><b>{{feedbackProviderRequestedCount}}</b></div>-->
+                <!--</div>-->
+                <!--<div class="row feedback-status">-->
+                <!--    <div class="col-md-10">Completed</div>-->
+                <!--    <div class="col-md-2" align="right"><b>{{feedbackProviderCompletedCount}}</b></div>-->
+                <!--</div>-->
+                <!--<div class="row feedback-status">
+    <!--                <div class="col-md-10">Declined</div>-->
+    <!--                <div class="col-md-2" align="right"><b>2</b></div>-->
+    <!--            </div> -->
+
+    <!--        </div>-->
+            <div class="col-md-4"></div>
+        </div>
+
+    
+
+<div class="dashboard-add-plan popup-center" id="isaddpopup" click-outside="closePopup()" ng-show="IsAddPlanPopupVisible">
+    <div class="row">
+        <div class="col-md-10  col-xs-10 goals-confirmation-heading" align="left"><b>Global margin plan</b>
+            <div>Please enter your global margin plan as an engagement partner</div>
+        </div>
+        <div class="col-md-2  col-xs-2" align="right"><span class="popup-close-bottom" ng-click="closePopup()">X</span></div>
+    </div>
+    <div class="row add-plan-row">
+        <input ng-model="metricValue"  /> %
+    </div>
+    <div class="message error add-plan-message" ng-show="errorPlanMessage">
+        Please enter a value between 1 and 100
+    </div>
+    <div class="goals-confirmation-footer">
+        <span class="lead-base-button grey" ng-click="closePopup()">Cancel</span>
+        <span class="lead-base-button yellow" ng-click="updatePlan()">Save</span>
+    </div>
+</div>
+
+    
+</div>

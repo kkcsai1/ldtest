@@ -1,0 +1,32 @@
+<div class="dashboard-comments" ng-repeat="usrData in data | orderBy: '-FeedbackSubmittedDate'">
+	                <div class="row">
+	                    <div class="col-md-1">
+	                        <div class="partner-image">
+	                        <img width="41" height="41" data-ng-src="data:image/png;base64,{{usrData.userPhoto}}" data-err-src="content/images/default_picture.jpg"/>
+	                        </div>            
+	                    </div>
+	                    <div class="col-md-11">
+	                        <div class=""><b>{{usrData.userName}}</b> - <!--{{usrData.JobTitle}} <span ng-show="usrData.JobTitle!=''">-</span>--> {{usrData.FeedbackSubmittedDate  | date : "dd/MMM/yyyy" }}</div>
+	                        <div>
+	                        	<b>Engagement/Project name</b>: <span style="display: block;" ng-class="{'text-rtl': usrData.projectNameDir == 'rtl'}">{{usrData.projectName}}</span>
+	                        </div>
+	                        <div class=""><b>Weighted</b>: {{usrData.weight}}</div>
+	                    </div>
+	                </div>
+	
+	                <!-- feedback comments -->
+	                <div class="row" ng-repeat="category in usrData.comments">
+	                    <div class="col-md-1"></div>
+	                    <div class="col-md-11">
+	                        <div class="d-comments-head">{{category.commentName}}</div>
+	                        <div ng-class="{'text-rtl': category.dir == 'rtl'}" class="d-comments-desc" ng-repeat="line in (category.comments_items | newlines) track by $index">
+		                        {{line}}
+		                    </div>
+	                    </div>
+	                </div>
+	            </div>
+				<div class="dashboard-comments" ng-show="data.length == 0" class="text-size-13" align="left">
+	             	
+                                    There are no comments available.
+                       
+                 </div>

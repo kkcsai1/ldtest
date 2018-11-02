@@ -1,0 +1,201 @@
+<div class="ppedd-dashboard-sr non-ppedd-view-dashboard">
+    <div ng-if="spinnerCounter>0">
+        <div id="spinnerLaunch" class="loading">Loading&#8230;</div>
+        <div id="spinner" class="loading" style="display:none">Loading&#8230;</div>
+    </div>
+
+    <div class="row">
+	    <div class="col-md-6">
+	    	<partner-Info show-extra="true" show-extended="true"></partner-Info>
+	    </div>
+	     <div class="col-md-6" align="right">
+	     	<div  class="feedback-cycle">Feedback cycle</div>
+	    	<select class="lead-base-select sr-staff  year-drop-down date-select" ng-model="selectedCycle"  ng-change="onCycleChange()"
+            	ng-options="cycle.cycleDate as cycle.cycleDisplayName for cycle in cycleList">
+			 </select>  
+
+			<select class="lead-base-select sr-staff year-drop-down year-select" ng-model="selectedYear" ng-change="onYearChange()"
+			ng-options="year.value as year.displayName for year in yearDropDown" >
+			</select> 
+	    </div>
+    </div>
+    <br>
+
+
+<div class="border-non-ppedd row">
+
+    <div class="row cls-margin-bottom-10">
+        <!--<div class="col-md-8 ">-->
+        <!--    <span class="metrics-quantitative-title">LEAD snapshot</span>-->
+        <!--</div>-->
+         <div ng-show="isDashboardPage" align="right" class="col-md-4 desktop-view-text hidden-md hidden-sm hidden-xs print-icon-blue-nonPPEDD" ng-click="printDashboard()">
+         <!--<div ng-show="isDashboardPage" align="right" class="col-md-4 desktop-view-text hidden-md hidden-sm hidden-xs  print-icon-blue" angular-popover direction="top" template="Coming soon" style="position: relative;"  mode="click" close-on-mouseleave="true">-->
+            <span class="print-icon"></span>
+            <span class="style-cursor-pointer">Print</span>
+        </div>
+    </div>
+    <div class="dashboard-top-buttons row">
+        <div class="col-md-12 row" align="right">
+            <!--<div angular-popover direction="top" template="Coming soon"   class="dashboard-hide-buttons remove-border self-assessment-button row" mode="click" close-on-mouseleave="true" ng-click="hideSelfAssessment()">
+                <span class="top-arrow-pointer-green">&nbsp;</span>
+                <span class="top-arrow-pointer-green shadow">&nbsp;</span>
+                <span>Self-assessment</span>
+            </div> -->
+            
+            <div  direction="top"  class="dashboard-hide-buttons remove-border self-assessment-button row"  ng-click="hideSelfAssessment()">
+                <span class="top-arrow-pointer-green">&nbsp;</span>
+                <span class="top-arrow-pointer-green shadow">&nbsp;</span>
+                <span>Self-assessment</span>
+            </div>
+            
+
+            <div class="dashboard-hide-buttons remove-border hide-peer-average-button row"  ng-click="hidePeerAverage()">
+                <span class="top-arrow-pointer-blue">&nbsp;</span>
+                <span class="top-arrow-pointer-blue shadow">&nbsp;</span>
+                <span>Peer group average</span>
+            </div>
+
+            <div  class="dashboard-hide-buttons remove-border ytd-progress-button row"  ng-click="ytdProgress()">
+                <span class="top-arrow-pointer-black">&nbsp;</span>
+                <span class="top-arrow-pointer-black shadow">&nbsp;</span>
+                <span><div align="left">Your YTD progress</div></span>
+            </div>
+
+             <!-- <div class="dashboard-hide-buttons remove-border final-assessment row">
+                <span class="top-arrow-pointer-ash">&nbsp;</span>
+                <span class="top-arrow-pointer-black shadow">&nbsp;</span>
+                <span>Final assessment</span>
+             </div> -->
+        </div>
+        <div align="right" ng-click="gotoDefinitionsPage()" class="dashboard-definitions">Dashboard definitions</div>
+    </div>
+    <div class="row donut-container" ng-class="noData ? 'reduce-height' : ''">
+        <div class="col-md-4 donut-bottom-border" ng-repeat="data in dashboardData.Categories | orderBy: 'SortOrder'">
+            <div class="donut-block">
+               <div ng-show="$index==3" class="quality-measures"><span class="user-icon"></span> <span class="hyperlink" ng-click="redirectToQRM()"> Quality & risk management measures report</span></div>
+               <!--<div ng-show="$index==3" class="quality-measures"><span class="user-icon"></span> <span class="hyperlink" angular-popover direction="top" template="This report is temporarily down for maintenance, and will be available shortly"  mode="click" close-on-mouseleave="true"> Quality & risk management measures report</span></div>-->
+               <donut ytdprogress="data.YTDProgress" PeerAverage="data.PeerAverage" selfassesment="data.SelfAssesment" finalassessment="data.FinalAssessment"  enablegreyshade="false"></donut>
+                <div class="category-heading">{{data.CategoryName}}</div>
+                <!-- <div class="category-divider"></div> -->
+                <!-- <div ng-repeat="goals in data.FbGoals">
+                    <div class="slider-row-heading">{{goals.GoalName}}</div>
+                    <div class="slider-row">
+                        <div multi-slider
+                             floor="0"
+                             ceiling="100"
+                             step="1"
+                             precision="2"
+                             bubbles="false"
+                             isdisabled=""
+                             ng-model="goals.sliderValue" ng-class=""></div>
+                    </div>
+                    
+                </div>
+               
+                <!-- <div ng-if="data.valueExistsCounter>0" class="donut-detail-bottom" align="center"><div align="center" class="lead-base-button white dashboard-detail-button" ng-click="gotoDetailPage(data)">Details</div></div> -->
+
+
+            </div>
+            
+        </div>
+		 <div class="no-mds-data row" ng-show="noData">
+                <div class="icon glyphicon glyphicon-info-sign"></div>
+                <div class="content">{{noData}}</div>
+            </div>
+        <div class="row" >
+            <div class="col-md-12 sr-comments-padding">
+                <div class="col-md-2">
+
+                <div align="center" ng-show="noData==false && comments.length > 0" ng-click="gotoDetailPage(dashboardData)" class="lead-base-button yellow dashboard-view-comments-button">View comments</div>
+
+                </div>
+                <div class="col-md-6">
+                    <!-- <span class="user-icon"></span> <span>Professional resposibilities report</span> -->
+                </div>
+                
+                <div ng-show="rankDesc == 'Senior Manager'" class="col-md-4" align="right"><span>click here for</span> <span class="hyperlink">
+
+                    
+                    <a  ng-href="http://globalreportingeruat.eurw.eyua.net/mm/_layouts/ey.erp.metrics.web/metrics.aspx" target="_blank" href="http://globalreportingeruat.eurw.eyua.net/mm/_layouts/ey.erp.metrics.web/metrics.aspx">My Business: Metrics</a>
+
+                </span></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="border-non-ppedd row">
+    <div class="row"><br>
+    <div class="col-md-4 feedback-snaps">
+        <div class="lead-title">
+            Feedback
+        </div>
+            <div class="feedback-padding">
+                <div>As feedback requester</div>
+
+                <div class="row feedback-status">
+                    <div class="col-md-10">Requested</div>
+                    <div class="col-md-2"><b>{{feedbackRequestedCount}}</b></div>
+                </div>
+                <div class="row feedback-status">
+                    <div class="col-md-10">Received</div>
+                    <div class="col-md-2"><b>{{feedbackReceivedCount}}</b></div>
+                </div>
+                <div class="row feedback-status">
+                    <div class="col-md-10">Declined</div>
+                    <div class="col-md-2"><b>{{feedbackRequesterDeclinedCount}}</b></div>
+                </div>
+                <br>
+            </div>
+    </div>
+     <div class="col-md-8 project-hours">
+        <div class="lead-title">
+            Your top engagement/project hours
+        </div>
+        <div class="feedback-padding"> 
+            <div class="row hour-progress" ng-repeat="eng in engHours">
+                <div class="col-md-2 right"><div class="eng-hours" angular-popover direction="top" template="{{eng.EngagementName}}" class="dashboard-hide-buttons remove-border hide-peer-average-button row" mode="click">{{eng.EngagementName}}</div></div>
+                <div class="col-md-9 padding-strip">
+                     <div class="progress-strip" ng-style="{ 'width' : eng.progressWidth }"></div>
+                     <div class="progress-strip-border" style="width:100%;margin-top:-2px;"></div>
+                </div>
+                <div class="col-md-1 right">{{eng.ChargedHours}}</div>
+            </div>
+        </div>
+        <div class="feedback-padding container-commingsoon" ng-show="engHours.length == 0" style="opacity:0.5">{{topEngNoData}}</div>
+        
+    </div>
+    </div>
+    <!--<div class="row feedback-padding staff-bottom-space staff-top-space"><span>*</span> Providing feedback is tracked as part of your professional responsibilities.-->
+    <!--</div>-->
+</div>
+
+<div class="dashboard-comments-non-ppedd">
+	<div class="border-non-ppedd row">
+		<comments-non-ppedd data="dashboardComments"></comments-non-ppedd>
+	</div>
+</div>
+
+<div class="dashboard-add-plan popup-center" id="isaddpopup" click-outside="closePopup()" ng-show="IsAddPlanPopupVisible">
+    <div class="row">
+        <div class="col-md-10  col-xs-10 goals-confirmation-heading" align="left"><b>Global margin plan</b>
+            <div>Please enter your global margin plan as an engagement partner</div>
+        </div>
+        <div class="col-md-2  col-xs-2" align="right"><span class="popup-close-bottom" ng-click="closePopup()">X</span></div>
+    </div>
+    <div class="row add-plan-row">
+        <input ng-model="metricValue"  /> %
+    </div>
+    <div class="message error add-plan-message" ng-show="errorPlanMessage">
+        Please enter a value between 1 and 100
+    </div>
+    <div class="goals-confirmation-footer">
+        <span class="lead-base-button grey" ng-click="closePopup()">Cancel</span>
+        <span class="lead-base-button yellow" ng-click="updatePlan()">Save</span>
+    </div>
+</div>
+
+
+</div>

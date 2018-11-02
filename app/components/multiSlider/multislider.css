@@ -1,0 +1,123 @@
+.angular-multi-slider {
+    display: inline-block;
+    position: relative;
+    height: 0px;
+    width: 100%;
+    margin: 11px 5px 25px 0px;
+    vertical-align: middle;
+}
+.angular-multi-slider div {
+    white-space: nowrap;
+    position: absolute;
+}
+.angular-multi-slider div.bar {
+    width: 90%;
+    height: 12px;
+    /*border-radius: 6px;*/
+    /*background: #999;*/
+    overflow: hidden;
+  
+    background: rgb(190,190,190); /* Old browsers */
+    background: -moz-linear-gradient(left,  rgba(190,190,190,1) 1%, rgba(201,198,155,1) 50%, rgba(254,230,6,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  rgba(190,190,190,1) 1%,rgba(201,198,155,1) 50%,rgba(254,230,6,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  rgba(190,190,190,1) 1%,rgba(201,198,155,1) 50%,rgba(254,230,6,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bebebe', endColorstr='#fee606',GradientType=1 ); /* IE6-9 */
+
+-webkit-box-shadow: inset -5px -6px 4px -4px rgba(0,0,0,0.24);
+-moz-box-shadow: inset -5px -6px 4px -4px rgba(0,0,0,0.24);
+box-shadow: inset -5px -6px 4px -4px rgba(0,0,0,0.24);
+}
+.angular-multi-slider div.handle {
+    width: 10px;
+	height: 30px;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 16px solid;
+    cursor: pointer;
+    /*width: 10px;
+    height: 30px;*/
+    top: -4px;
+
+    background-color: transparent; /*can override with color in slider object*/
+    /*border: 1px solid #000;*/
+    z-index: 2;
+    /*border-radius: 4px;*/
+    -o-transition: .3s;
+    -ms-transition: .3s;
+    -moz-transition: .3s;
+    -webkit-transition: .3s;
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+}
+
+.disableSlider .handle
+{
+    /*opacity:0.4;*/
+    cursor:not-allowed!important;
+}
+
+.disableSlider .grab 
+{
+    /*opacity:0.4;*/
+    cursor:not-allowed!important;
+    z-index: -1!important;
+}
+
+.angular-multi-slider div.handle:hover,
+.angular-multi-slider div.handle:focus,
+.angular-multi-slider div.handle:active,
+.angular-multi-slider div.handle.active {
+    -webkit-filter: brightness(70%);
+    filter: brightness(70%);
+}
+.angular-multi-slider div.handle:hover + .bubble,
+.angular-multi-slider div.handle:focus + .bubble,
+.angular-multi-slider div.handle.grab + .bubble,
+.angular-multi-slider div.handle:hover,
+.angular-multi-slider div.handle:focus,
+.angular-multi-slider div.handle.grab {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    z-index: 99;
+
+}
+.angular-multi-slider div.handle.grab + .bubble,
+.angular-multi-slider div.handle.grab{
+    background-color: transparent;
+}
+.angular-multi-slider div.bubble {
+    display: none;
+    cursor: default;
+    top: -36px;
+    padding: 1px 3px 1px 3px;
+    font-size: 0.7em;
+    font-family: sans-serif;
+    -o-transition: .1s;
+    -ms-transition: .1s;
+    -moz-transition: .1s;
+    -webkit-transition: .1s;
+    -webkit-transition-property: top;
+    transition-property: top;
+    z-index: 100;
+}
+.angular-multi-slider-key .key span,
+.angular-multi-slider div.bubble.active {
+    /*display: inline-block;*/
+    display:none;
+    color: #fff;
+    font-size:12px;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: rgba(0,0,0,0.75);
+    border-radius: 8px;
+    padding: 3px 8px;
+}
+.angular-multi-slider div.limit {
+    margin-top: 12px;
+    color: #000;
+    font-weight: bold;
+    display:none;
+}
+.angular-multi-slider-key .key span {
+    border: 1px solid #000;
+}

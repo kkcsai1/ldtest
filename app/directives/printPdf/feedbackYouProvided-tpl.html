@@ -1,0 +1,54 @@
+﻿<!--title-->
+<div class="row">
+    <div align="left" class="print-selection-heading col-md-10  col-xs-10"><h3 class="print-selection-heading">Feedback you provided</h3></div>
+    <div align="right" class="col-md-2  col-xs-2 style-cursor-pointer" ng-click="closePopup('xbutton')"><b>X</b></div>
+</div>
+<!--Report Options-->
+<br />
+<div class="row" ng-init="fbYouProvidedAllOrRecent.selection = 'REC'"><!---->
+    <div align="left" class="col-md-2  col-xs-2">
+        <input name="AllOrRecent" type="radio" value="ALL" ng-model="fbYouProvidedAllOrRecent.selection" ng-change="fbYouProvidedSelectionmade(fbYouProvidedAllOrRecent.selection)">&nbsp;Select All
+    </div>
+    <div align="left" class="col-md-10  col-xs-10">
+        <input name="AllOrRecent" type="radio" value="REC" ng-model="fbYouProvidedAllOrRecent.selection" ng-change="fbYouProvidedSelectionmade(fbYouProvidedAllOrRecent.selection)">&nbsp;Select only the most recent feedback
+    </div>
+</div>
+<!--Feedback selections header-->
+    <br />
+    <div class="row feedback-print-header">
+        <div align="left" class="col-md-6  col-xs-6">
+            <div class="col-md-1 col-xs-2">
+            </div>
+            <!-- show Name only for the first rcord -->
+            <div class="col-md-11 col-xs-10">Name</div>
+        </div>
+        <div align="left" class="col-md-6  col-xs-6">Feedback date</div>
+    </div>
+        <!-- Selections to print -->
+        <div class="row selection-to-print">
+            <div ng-repeat="feedback in fbYouProvidedForPrint" class="row border-line">
+                
+                <div ng-repeat="date in feedback.FeedbackDates" class="row print-each-row" ng-init="chk_id=$parent.$index + '' + $index">
+                    <div class="col-md-6  col-xs-6" align="left">
+                        <div class="col-md-2 col-xs-2">
+                            &nbsp;<input name="feedbackChkbox" id="check_{{chk_id}}" ng-if="$index == 0" type="checkbox" ng-model="date.isSelected"  class="checkbox-custom" />
+                                  <label for="check_{{chk_id}}" ng-if="$index == 0" class="checkbox-custom-label"></label> 
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <span ng-if="$index == 0">{{feedback.Name}}</span>
+                            <input name="feedbackChkbox" id="check_{{chk_id}}" ng-if="$index != 0" type="checkbox" ng-model="date.isSelected" class="checkbox-custom" />
+                            <label for="check_{{chk_id}}" ng-if="$index != 0" class="checkbox-custom-label"></label> 
+                        </div>
+                    </div>
+                        <!-- show Name only for the first rcord -->
+                    <div align="left" class="col-md-6  col-xs-6">&nbsp;&nbsp;
+                        {{feedback.GUI === feedback.FeedbackProviderGUI ? 'Self-assessment' : date.date | date:"dd/MMM/yyyy"}}
+                    </div>
+                </div>
+
+                </div>
+        </div>
+        <br />
+        <div class="row" id="buttonsRow">
+            <span class="lead-base-button grey" ng-click="closePopup('cancelbutton')">Cancel</span><span class="button-spacing"></span><span class="lead-base-button yellow {{disablePrint()?'disabled cursor-disabled':''}}" ng-click="printFbYouProvided()">Print PDF</span>
+        </div>

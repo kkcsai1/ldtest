@@ -1,0 +1,29 @@
+<div class="dashboardContainer">
+    <!-- <div class="page-head">Dashboard</div> -->
+    <div class="app-name">LEAD</div>
+    <div class="row">
+	    <div class="col-md-6">
+	    	<partner-Info show-extra="true" show-extended="true"></partner-Info>
+	    </div>
+	     <div class="col-md-6" align="right">
+
+	     	<div class="feedback-cycle">Feedback cycle</div>
+
+	    	<select class="lead-base-select sr-staff  year-drop-down date-select">
+		 		<option selected="selected">Year to date</option>
+		 		<option>Cycle 1</option>
+		 		<option>Cycle 2</option>
+		 	</select>
+
+	 		<select class="lead-base-select sr-staff year-drop-down year-select" ng-model="selectedYear"  
+			ng-options="year.value as year.displayName for year in yearDropDown">
+			</select> 	
+	    </div>
+    </div>
+    <br>
+    <div>
+     	<dashboardnonppeddstaff dashboard-controller="DashboardNonPPEDDDataStaffCtrl"></dashboardnonppeddstaff>
+    </div>
+    
+    <footer></footer>
+</div>

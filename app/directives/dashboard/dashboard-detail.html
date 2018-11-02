@@ -1,0 +1,163 @@
+<div class="dashboard-detail-nonppedd-wrapper">
+    <div class="bread-crumb"><span class="style-cursor-pointer" ng-click="redirectTo('dashboard')">{{isDashboardPage? 'Dashboard': 'Dashboard Summary' }}</span> &gt; <span>{{dashBoardData.CategoryName}}</span></div>
+   
+    <div class="row cls-margin-bottom-10">
+        <div class="col-md-8 ">
+            <div class="page-head">{{dashBoardData.CategoryName}}</div>
+        </div>
+        <div  align="right" class="col-md-4 desktop-view-text hidden-md hidden-sm hidden-xs  print-icon-blue" ng-click="printDashboard()">
+            <span class="print-icon"></span>
+            <span class="style-cursor-pointer">Print</span>
+        </div>
+    </div>
+
+    <div class="page-content dashboard-detail-remove-border">
+        <div ng-if="spinnerCounter>0">
+            <div id="spinnerLaunch" class="loading">Loading&#8230;</div>
+            <div id="spinner" class="loading" style="display:none">Loading&#8230;</div>
+        </div>
+        
+        <div class="row definition-profile-info">
+                <div class="col-md-1">
+                    <img width="72" height="72" data-ng-src="data:image/png;base64,{{currentUser.imageURL}}" data-err-src="content/images/default_picture.jpg"/>
+                </div>
+                <div class="col-md-11" align="left">
+                    {{currentUser.displayName}} - {{currentUser.rankDesc}}
+                </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-5">
+                <donut ytdprogress="dashBoardData.YTDProgress" PeerAverage="dashBoardData.PeerAverage" selfassesment="dashBoardData.SelfAssesment" finalassessment="dashBoardData.FinalAssessment" enablegreyshade="data.enablegreyshade"></donut>
+            </div>
+            <div class="col-md-7 slider-block">
+                <div class="dashboard-top-buttons sub row">
+                     <div class="col-md-12 row" align="right">
+                        
+                        <div angular-popover direction="top" template="Coming soon" style="position: relative;" class="dashboard-hide-buttons remove-border  self-assessment-button row" mode="click" close-on-mouseleave="true" ng-click="hideSelfAssessment()">
+                            <span class="top-arrow-pointer-green">&nbsp;</span>
+                            <span class="top-arrow-pointer-green shadow">&nbsp;</span>
+                            <span>Self-assessment</span>
+                        </div>
+
+						<div ng-show="peerGroupEnable"  class="dashboard-hide-buttons remove-border  hide-peer-average-button row">
+                            <span class="top-arrow-pointer-blue">&nbsp;</span>
+                            <span class="top-arrow-pointer-blue shadow">&nbsp;</span>
+                            <span>Peer average</span>
+                        </div>
+                        
+                        <div ng-show="!peerGroupEnable" angular-popover direction="top" template="Coming soon" style="position: relative;"  class="dashboard-hide-buttons remove-border  hide-peer-average-button row" mode="click" close-on-mouseleave="true" ng-click="hidePeerAverage()">
+                            <span class="top-arrow-pointer-blue">&nbsp;</span>
+                            <span class="top-arrow-pointer-blue shadow">&nbsp;</span>
+                            <span>Peer average</span>
+                        </div>
+
+                        <div class="dashboard-hide-buttons remove-border ytd-progress-button row" ng-click="ytdProgress()">
+                            <span class="top-arrow-pointer-black">&nbsp;</span>
+                            <span class="top-arrow-pointer-black shadow">&nbsp;</span>
+                            <!--<span ng-show="data.isQuality == true"><div align="left">Your YTD progress</div> <div align="left">or indicative assessment</div></span>-->
+                            <!--<span ng-show="data.isQuality != true"><div align="left">Your YTD progress</div></span>-->
+                            <span><div align="left">Your YTD progress</div></span>
+                        </div>
+						
+						<!-- hard coded values for ECS & PET -->
+                        <!--<div ng-hide="dashBoardData.CategoryID == 5 || dashBoardData.CategoryID == 6"  class="dashboard-hide-buttons remove-border final-progress-button row">-->
+                            <!-- <span class="top-arrow-pointer-ash">&nbsp;</span> -->
+                        <!--    <span class="top-arrow-pointer-ash shadow">&nbsp;</span>-->
+                        <!--    <span>Final Assessment</span>-->
+                        <!--</div>-->
+                        
+                    </div>
+                </div>
+
+
+                <div class="row d-detail-right">
+                    <div ng-repeat="goals in dashBoardData.FbGoals  | orderBy: 'SortOrder'">
+                        <div class="slider-row-heading">{{goals.GoalName}}</div>
+                        
+                        <div class="slider-row">
+                            <div multi-slider
+                                 floor="0"
+                                 ceiling="100"
+                                 step="1"
+                                 precision="2"
+                                 bubbles="false"
+                                 isdisabled=""
+                                 ng-model="goals.sliderValue" ng-class=""></div>
+                        </div>
+                         <p ng-bind-html="myText"></p>
+                        <div class="slider-row-heading-desc  text-size-13" ng-bind-html="goals.GoalDescription"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row detail-divider"></div>
+
+        <div class="row feedback-listing-row">
+
+
+            <div class="title">Feedback</div>
+            <div class="row feedback-listing-repeater" ng-repeat="data in mergedComments | orderBy : '-FeedbackSubmittedDate'">
+
+<div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-1 comments-image-width">
+                            <div class="image">
+                                <img width="41" height="41" data-ng-src="data:image/png;base64,{{data.photo}}" data-err-src="content/images/default_picture.jpg"/>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div><b>{{data.userName}}</b></div>
+                            <div><b>Weighted: {{data.weightKey}}</b></div> 
+                        </div>
+                        <div class="col-md-9">
+                            {{data.FeedbackSubmittedDate | date:"dd/MMM/yyyy"}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <br>
+                        <div class="comments-detail-title-padding"><b>Comments</b></div>
+                        <div class="comments-detail-padding">
+                            <!--<div ng-bind-html="data.comments">-->
+                               
+                            <!--</div>-->
+                            
+                            <div class="ng-cloak" ng-class="{'text-rtl': data.dir == 'rtl'}" ng-repeat="line in (data.comments | newlines) track by $index">
+		                        {{line}}
+		                    </div>
+
+                             <div ng-show="mergedComments.length==0 && isCommentsVisible" class="text-size-13" align="left">
+                                    There are no comments available.
+                             </div>
+
+                        </div>
+                    </div>
+                </div>
+
+              <!--   <div class="row">
+                    <div class="image">
+                        <img height="41" weight="41" ng-src="{{data.PICTURE_URL==null || data.PICTURE_URL==''? 'content/images/default_picture.jpg' : data.PICTURE_URL }}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 name" align="left">{{data.UserName}}</div>
+                    <div class="col-md-9 date" align="left">{{data.FeedbackSubmittedDate | date:"dd/MMM/yyyy"}}</div>
+                </div>
+                <div class="row desc">
+                    <span ng-class="ng-cloak" ng-repeat="line in (data.FeedbackDescription | newlines) track by $index">
+                        {{line}}
+                        <br>
+                    </span>
+                </div> -->
+
+
+            </div>
+
+            <div ng-show="dashBoardData.Comments.length==0 && isCommentsVisible" class="text-size-13" align="left">
+                There are no comments available.
+            </div>
+        </div>
+    </div>
+</div>

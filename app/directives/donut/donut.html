@@ -1,0 +1,33 @@
+<div class="cirlce" ng-class="{'inner-circle': noValues(ytdprogress, peeraverage, selfassesment, finalassessment, enablegreyshade)}">
+    <div class="circle-if-exist">
+    	
+    	<div class="number-values" ng-if="formtype== 'A' || formtype == 'B'">
+    		<div class="number-1">1</div>
+    		<div class="number-2">2</div>
+    		<div class="number-3">3</div>
+    		<div class="number-4">4</div>
+    		<div class="number-5">5</div>
+    	</div>
+    	
+    	
+    	<div ng-class="{'form-inside': formtype == 'B' }">
+		    <div class="ytd shadow" ng-show="ytdprogress!==''" ng-style="ytd_progress(ytdprogress)"><div class="ytd-pointer-green shadow">&nbsp;</div></div>
+		    <div class="ytd" ng-show="ytdprogress!==''" ng-style="ytd_progress(ytdprogress)"><div class="ytd-pointer-green">&nbsp;</div>
+		        <div class="pointer"></div>
+		    </div>
+		    <!--<div class="peer-average shadow" ng-show="peeraverage!==''" ng-style="peer_average(peeraverage)"><div class="peer-average-pointer-red shadow">&nbsp;</div></div>-->
+		    <div class="peer-average" ng-show="peeraverage!==''" ng-style="peer_average(peeraverage)"><div class="peer-average-pointer-red">&nbsp;</div>
+		        <div class="pointer"></div>
+		    </div>
+		    <div class="self-assessment-arrow shadow" ng-show="selfassesment!==''" ng-style="self_assesment(selfassesment)"><div class="self-assessment-pointer-black shadow">&nbsp;</div></div>
+		    <div class="self-assessment-arrow" ng-show="selfassesment!==''" ng-style="self_assesment(selfassesment)"><div class="self-assessment-pointer-black">&nbsp;</div>
+		        <div class="pointer"></div>
+		    </div>
+		
+		    <!--<div class="final shadow" ng-show="finalassessment!==''" ng-style="final_assessment(finalassessment)"><div class="final-pointer-green shadow">&nbsp;</div></div>-->
+		    <div class="final" ng-show="finalassessment!==''" ng-style="final_assessment(finalassessment)"><div class="final-pointer-green">&nbsp;</div>
+		        <div class="pointer final-align"></div>
+		    </div>
+	    </div>
+	</div>
+</div>

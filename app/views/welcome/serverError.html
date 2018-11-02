@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="block-content-main">
+        <div class="row">
+            <h3 class="server-error-msg server-error-bold">{{header}}</h3>
+            <!--{{ishtml}}-->
+            <div ng-if="AppConstants.SHOW_DEBUG_MESSAGE">
+                <div>Header: {{headersTest}}</div>
+                <div ng-hide="ishtml">Data: {{dataTest}}</div>
+                <div ng-show="ishtml" ng-bind-html="detailError"></div>
+                <div>Status: {{statusTest}}</div>
+            </div>
+            <div>
+                <p class="server-error-msg server-error-rerular">{{message}}</p>
+            </div>
+        </div>
+    </div>
+</div>

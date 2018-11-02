@@ -1,0 +1,30 @@
+<div class="row">
+<div class="col-md-12">
+	<div class="col-md-2">
+		<div class="partner-image">
+		    <!--<img src="{{vm.partnerInfo.PictureUrl=='' || vm.partnerInfo.PictureUrl==null ? 'content/images/default_picture.jpg':vm.partnerInfo.PictureUrl}}"/>-->
+		    <img width="72" height="72" data-ng-src="data:image/png;base64,{{vm.partnerInfo.PictureUrl}}" data-err-src="content/images/default_picture.jpg"/>
+		</div> 
+	</div>
+	<div class="col-md-10">
+		<div class="partner-data-info-outer" ng-class="vm.partnerInfo.showExtended ? 'padding-remover': ''">
+		    <span class="partner-data-name" ng-bind="vm.partnerInfo.Name"></span> - 
+		    <span class="partner-data-extra" ng-show="vm.partnerInfo.showExtra" ng-bind="vm.partnerInfo.rankDesc"></span>
+		    <div ng-show="vm.partnerInfo.showExtended">
+			    <div>
+			    	<span ng-bind="vm.partnerInfo.Location"></span>
+			    </div>
+			    <div>
+			    <!--	Hire date: <span>{{ vm.partnerInfo.HireDate | date : "dd/MM/yyyy" }}</span>-->
+			    </div>
+			    <div>
+			    	Counselor: {{vm.partnerInfo.firstName}} {{vm.partnerInfo.lastName}}
+			    </div>
+			    <div>
+			    	Counselor connect leader: {{vm.partnerInfo.connectLeaderFirstName}} {{vm.partnerInfo.connectLeaderLastName}}
+			    </div>
+			</div>
+		 </div>
+	 </div>
+</div>
+</div>

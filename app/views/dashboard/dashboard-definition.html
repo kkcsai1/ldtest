@@ -1,0 +1,221 @@
+<div class="dashboardContainer">
+
+    <div class="bread-crumb"><span class="style-cursor-pointer" ng-click="redirectTo('dashboard-non-ppedd-sr')">Dashboard</span> &gt; <span>Dashboard definitions</span></div>
+
+    <!-- <div class="page-head">Dashboard</div> -->
+    <div class="app-name">Dashboard definitions</div>
+    <br>
+    <div class="page-content dashboard-definition-container">
+     		
+
+            <div class="row definition-profile-info">
+                <div class="col-md-1">
+                    <img width="72" height="72" data-ng-src="data:image/png;base64,{{currentUser.imageURL}}" data-err-src="content/images/default_picture.jpg"/>
+                </div>
+                <div class="col-md-11" align="left">
+                    {{currentUser.displayName}} - {{currentUser.rankDesc}}
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+
+                <div class="row definitions-title">
+                    Dashboard legend
+                </div>
+
+                <div class="row definitions-row"> 
+                    <div class="col-md-3" align="right">
+                        
+                        <div class="dashboard-hide-buttons remove-border ytd-progress-button row">
+                        <span class="top-arrow-pointer-black">&nbsp;</span>
+                        <span class="top-arrow-pointer-black shadow">&nbsp;</span>
+                        <span>Your YTD progress</span>
+                        </div>
+
+                    </div>
+                    <div class="col-md-1" align="right"></div>
+                    <div class="col-md-8 definitions-desc">The black triangle represents the consolidated feedback responses of all YTD feedback provided.</div>
+                </div>
+
+                 <div class="row definitions-row"> 
+                    <div class="col-md-3" align="right">
+
+                        <div class="dashboard-hide-buttons remove-border hide-peer-average-button row">
+                        <span class="top-arrow-pointer-blue">&nbsp;</span>
+                        <span class="top-arrow-pointer-blue shadow">&nbsp;</span>
+                        <span>Peer group average</span>
+                        </div>
+
+                    </div>
+                    <div class="col-md-1" align="right"></div>
+                    <div class="col-md-8 definitions-desc">The green triangle represents the average of all the feedback responses for individuals within a peer group (i.e. individuals at the same rank aligned to a service line or sub service line/function within a given area, region or geography). The peer group average serves as a comparative reference to guide conversations about development. It is a static indicator representing a YTD average and appears at the end of each cycle.</div>
+                </div>
+
+                 <div class="row definitions-row"> 
+                    <div class="col-md-3" align="right">
+                        
+                        <div class="dashboard-hide-buttons remove-border self-assessment-button row">
+                        <span class="top-arrow-pointer-green">&nbsp;</span>
+                        <span class="top-arrow-pointer-green shadow">&nbsp;</span>
+                        <span>Self-assessment</span>
+                        </div>
+
+                    </div>
+                    <div class="col-md-1" align="right"></div>
+                    <div class="col-md-8 definitions-desc">The blue triangle represents the feedback response provided through the self-assessment.</div>
+                </div>
+
+            </div>
+
+
+
+            <div class="row">
+
+                <div class="row definitions-title">
+                    Demographic data 
+                </div>
+
+                <div class="row definitions-row"> 
+                    <div class="col-md-3" align="right">
+                        
+                        Peer group criteria
+
+                    </div>
+                    <div class="col-md-1" align="right"></div>
+                    <div class="col-md-8 definitions-desc">
+                    	<!--Area=EMEIA>>Region=Mediterranean>>Country=Italy>>Rank=Assistant Director>>SL=CBS-->
+                    	{{peerPath}}
+                    	<!--Coming in March 2018-->
+                    </div>
+                </div>
+
+                 <div class="row definitions-row"> 
+                    <div class="col-md-3" align="right">
+                            Location
+                    </div>
+                    <div class="col-md-1" align="right"></div>
+                    <div class="col-md-8 definitions-desc">The area, region, BU, SMU an individual belongs based on location.</div>
+                </div>
+
+                 <div class="row definitions-row"> 
+                    <div class="col-md-3" align="right">
+                       Service line / sub-service line</span>
+                    </div>
+                    <div class="col-md-1" align="right"></div>
+                    <div class="col-md-8 definitions-desc">The service line, sub-service line an individual belongs based on location.</div>
+                </div>
+
+                 <div class="row definitions-row"> 
+                    <div class="col-md-3" align="right">
+                        Hire date
+                    </div>
+                    <div class="col-md-1" align="right"></div>
+                    <div class="col-md-8 definitions-desc">Most recent hire date that the individual became active.</div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="row definitions-title">
+                   LEAD feedback survey questions
+                </div>
+                <!--<div class="row definitions-row" ng-show="isNonGSAForm"> -->
+                <div class="row definitions-row"> 
+                  <span> Please <a href="https://share.ey.net/sites/betterconversations/eng/TileDocuments/Guide%20-%20Feedback%20survey%20questions.pdf" target="_blank">Click</a> here to see the survey </span>
+                </div> 
+                <!--<div class="row definitions-row" ng-show="isGSAForm"> -->
+                <div class="row definitions-row">
+                  <span> For GSA Exceptional performance dimensions, please click <a href="https://share.ey.net/sites/betterconversations/gsa/TileDocuments/Exceptional%20Performance%20Dimensions.pdf" target="_blank">here</a> </span>
+                </div>
+
+               <!-- <div class="row definitions-row"> 
+                    <div class="col-md-3" align="right">
+                        
+                        Quality, risk management & technical excellence
+
+                    </div>
+                    <div class="col-md-1" align="right"></div>
+                    <div class="col-md-8 definitions-desc">Applied deep technical knowledge to lead their teams, engagements or projects to deliver quality results</div>
+                </div>
+
+                 <div class="row definitions-row"> 
+                    <div class="col-md-3" align="right">
+                            Client leadership
+                    </div>
+                    <div class="col-md-1" align="right"></div>
+                    <div class="col-md-8 definitions-desc">Build strong and trusting client relationships by developing a point of view through a deep understanding of the client, proactively anticipating and addressing client needs.</div>
+                </div>
+
+                 <div class="row definitions-row"> 
+                    <div class="col-md-3" align="right">
+                       Team leadership</span>
+                    </div>
+                    <div class="col-md-1" align="right"></div>
+                    <div class="col-md-8 definitions-desc">Build an environment of mutual trust and high performance by proactivly providing opprotuniites for collaboration, and empowering personal development and achievement of team goals.</div>
+                </div>
+
+                 <div class="row definitions-row"> 
+                    <div class="col-md-3" align="right">
+                       Business leadership
+                    </div>
+                    <div class="col-md-1" align="right"></div>
+                    <div class="col-md-8 definitions-desc">Leverage a deep understanding of team priorities to generate innovative ideas that resulted in tangible benefits on this engagement/project.</div>
+                </div>
+
+                <div class="row definitions-row"> 
+                    <div class="col-md-3" align="right">
+                        Personal leadership
+                    </div>
+                    <div class="col-md-1" align="right"></div>
+                    <div class="col-md-8 definitions-desc">Confidently and skillfully navigated chanllenging circumstances, and communicated messages with confidence to inspire trust with client and colleagues.</div>
+                </div>
+
+                <div class="row definitions-row"> 
+                    <div class="col-md-3" align="right">
+                        Recommendation
+                    </div>
+                    <div class="col-md-1" align="right"></div>
+                    <div class="col-md-8 definitions-desc">Indicate the extent to which you would recommend this individual for future work on a similar assignment.</div>
+                </div>
+
+                <div class="row definitions-row"> 
+                    <div class="col-md-3" align="right">
+                        Engagement/project metrics
+                    </div>
+                    <div class="col-md-1" align="right"></div>
+                    <div class="col-md-8 definitions-desc">Indicate the extent to which this individual helped the team achieve or improve engagement/project metrics.</div>
+                </div> -->
+
+            </div>
+
+            <br><br>
+            <!-- table -->
+            <div class="row table-header">
+                <div class="col-md-4">Data type</div>
+                <div class="col-md-8 definitions-desc">Effective date of data</div>
+            </div>
+            <div class="row table-row">
+                <div class="col-md-4">My Business: Metrics</div>
+                <div class="col-md-8 definitions-desc">Data is updated weekly on Tuesdays</div>
+            </div>
+            <div class="row table-row odd">
+                <div class="col-md-4">Top engagement/project hours</div>
+                <div class="col-md-8 definitions-desc">Data is updated in Enterprise Data Warehouse weekly</div>
+            </div>
+            <div class="row table-row">
+                <div class="col-md-4">Demographic data</div>
+                <div class="col-md-8 definitions-desc">Data is updated in Enterprise Data Warehouse daily</div>
+            </div>
+
+
+    		<br><br>
+    		<div align="center" ng-click="redirectTo('dashboard-non-ppedd-sr')" class="lead-base-button yellow dashboard-view-comments-button back">Back</div>
+    		
+
+    </div>
+    
+    <footer></footer>
+</div>

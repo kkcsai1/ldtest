@@ -1,0 +1,37 @@
+
+<div class="dashboardContainer">
+    <!-- <div class="page-head">Dashboard</div> -->
+    <div class="app-name">LEAD</div>
+    <div class="row">
+	    <div class="col-md-6">
+	    	<partner-Info show-extra="true" show-extended="true"></partner-Info>
+	    </div> 
+    </div>
+    <br>
+    <div>
+     	<div class="col-md-6" align="right">
+	     	 <autocomplete ng-model="result" skipownsearch="true" click-activation="false" data="suggestions" on-type="" on-select="onProfileSelected" class=" col-lg-12 col-md-12 col-lg-sm col-xs-12 cls-margin-top-5"></autocomplete>
+	    </div>
+	    
+	    <br>
+	    <br>
+	    
+	    <div class="col-md-12" ng-repeat="counsele in counsellor">
+	     	<div class="col-md-8">
+				<div class="partner-image" >
+				    <!--<img src="{{vm.partnerInfo.PictureUrl=='' || vm.partnerInfo.PictureUrl==null ? 'content/images/default_picture.jpg':vm.partnerInfo.PictureUrl}}"/>-->
+				    <img width="172" height="102" data-ng-src="data:image/png;base64,{{counsele.PictureUrl}}" data-err-src="content/images/default_picture.jpg"/>
+					  <span class="partner-data-name" ng-bind="counsele.name"></span> - 
+				      <span class="partner-data-extra"  ng-bind="counsele.rankDesc"></span>
+				</div> 
+			</div> 
+    	</div> 
+    </div>
+    
+    <footer></footer>
+</div>
+
+
+
+
+ 

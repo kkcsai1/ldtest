@@ -1,0 +1,35 @@
+<div class="dashboardContainer">
+
+    <div class="bread-crumb"><span class="style-cursor-pointer" ng-click="gotoDashboardPage('{{backPage}}')">Dashboard</span> <span>{{dashBoardData.CategoryName}}</span> &gt; <span>Comments</span></div>
+
+    <!-- <div class="page-head">Dashboard</div> -->
+    <div class="app-name">Comments</div>
+    <br>
+    <div class="page-content dashboard-comments-container">
+		    	 <div ng-if="spinnerCounter>0">
+		            <div id="spinnerLaunch" class="loading">Loading&#8230;</div>
+		            <div id="spinner" class="loading" style="display:none">Loading&#8230;</div>
+		        </div>
+            
+				<div class="row definition-profile-info">
+                <div class="col-md-1">
+                    <img width="72" height="72" data-ng-src="data:image/png;base64,{{currentUser.imageURL}}" data-err-src="content/images/default_picture.jpg"/>
+                </div>
+                <div class="col-md-11" align="left">
+                    {{currentUser.displayName}} - {{currentUser.rankDesc}}
+                </div>
+    		    </div>
+
+				<br>
+            	<div align="center" ng-click="gotoDashboardPage('dashboard-non-ppedd-staff')" class="lead-base-button yellow dashboard-view-comments-button back">Back</div>
+            	<br>
+            	
+            	<comments-non-ppedd data="dashBoardData.UserResponded"></comments-non-ppedd>
+        		<br>
+            <div align="center" ng-click="gotoDashboardPage('dashboard-non-ppedd-staff')" class="lead-base-button yellow dashboard-view-comments-button back">Back</div>
+            <br>
+
+    </div>
+    
+    <footer></footer>
+</div>

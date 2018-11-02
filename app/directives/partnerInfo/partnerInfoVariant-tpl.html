@@ -1,0 +1,14 @@
+﻿<!--<div class="partner-image"><img ng-src="{{peopleInfo.pictureUrl}}" /></div>
+<div class="partner-data-info-outer">
+    <div class="partner-data-name" ng-bind="peopleInfo.role"></div>
+    <div class="partner-data-extra" ng-bind="peopleInfo.displayName"></div>
+</div>-->
+
+<div class="col-md-2">
+    <div class="goals-focus-list-profile-pic"><img ng-src="{{peopleInfo.pictureUrl ? peopleInfo.pictureUrl : 'content/images/default_picture.jpg'}}" 
+    src="{{peopleInfo.pictureUrl ? peopleInfo.pictureUrl : 'content/images/default_picture.jpg'}}"/>
+</div>
+</div>
+<div class="col-md-10">
+    <div class="goals-focus-list-profile-info"><b>{{peopleInfo.role}}</b><div class="goals-focus-list-partner-name">{{peopleInfo.displayName}}</div></div>
+</div>

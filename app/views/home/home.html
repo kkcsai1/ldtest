@@ -1,0 +1,155 @@
+<div class="homeContainer" ng-app="myApp.home">
+    <div class="hero fullscreen background parallax" data-img-width="1920" data-img-height="460" data-diff="80">
+      
+        <div class="lead-board">
+            <div class="lead-board-left-spacing">
+                <div class="lead-board-ey-logo-mobile"><img src="content/icons/EY_logo_img.png"/></div>
+                <div class="lead-board-heading">LEAD</div>
+                <div class="lead-board-description">The Gold Standard for partner performance & development</div>
+                <div class="lead-board-partner-info" >
+                    <!-- The attribute show-extra is required to show additional partner details -->
+                    <partner-Info show-extra="true"></partner-Info>
+                </div>
+            </div>
+        </div>
+     
+    </div>
+    
+    <div class="explore-gold-standard">
+        <div class="explore-gold-standard-padding">
+            <div class="explore-gold-standard-heading" align="center">Explore the Gold Standard</div>
+            <div class="gold-icon"><img src="content/icons/little-people.png" /></div>
+            <div class="explore-gold-standard-measure" align="center">Who demonstrates the Gold Standard?</div>
+            <div class="explore-gold-standard-content" align="center">The increasingly complex and challenging environments in which we operate, demand our best. As executives and leaders, our partners aspire to embody the "Gold Standard" for excellence in delivering exceptional client service, developing our people and achieving the highest levels of quality. We recognize that our stakeholders have high expectations. These ideals are consistent and ambitious. They are not adjusted to apply relative to a partner's tenure, market or service line, but are based on the expectations and aspirations of our entire partner population.</div>
+                <div class="lead-base-button explore-gold-standard-content-button" ng-click="redirectTo('goldstandard')">Tell me more</div>
+        </div>
+    </div>
+    
+    <div class="explore-gold-standard-bg fullscreen background parallax"  data-img-width="1920" data-img-height="460" data-diff="80">
+        
+        <div class="explore-gold-standard-padding">
+        
+        <div id="myCarousel" class="carousel slide  mobile-screen-block" data-ride="carousel" ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+              <div class="item active">
+                <div class="col-lg-4" ng-click="redirectTo('goals')">
+                    <div class="block-heading" align="center">Set goals</div>
+                    <div class="explore-icon"><img src="content/icons/create-goals-icon.png" /></div>
+                    <p>Partner goals are based on the Gold Standards that are aligned to the existing global metrics. During goal-setting you will:</p>
+                    <ul class="explore-gold-points">
+                        <li>> Add context to how you will strive toward the Gold Standard </li>
+                        <li>> Identify your areas of responsibility for the year ahead </li>
+                        <li>> Select your feedback providers</li>
+
+                    </ul>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="col-lg-4" ng-click="redirectTo('feedback-list')">
+                    <div class="block-heading" align="center">Request feedback</div>
+                    <div class="explore-icon"><img src="content/icons/request-feedback-icon.png" /></div>
+                    <p>LEAD enables you to request feedback from multiple sources and allows you to add new feedback providers during the year. When requesting feedback, keep in mind that feedback providers:</p>
+                    <ul class="explore-gold-points">
+                        <li>> Should be selected based on your key areas of responsibility and roles </li>
+                        <li>> Can be 'weighed' based on your time allocation to that area of responsibility</li>
+                        <li>> Require LEAD reviewer approval</li>
+                        <li>> Anticipate 3-4 feedback providers in addition to LEAD reviewer</li>
+                    </ul>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="col-lg-4" ng-click="redirectTo('feedback-list')">
+                    <div class="block-heading" align="center">Provide feedback</div>
+                    <div class="explore-icon"><img src="content/icons/provide-feedback.png" /></div>
+                    <p>Feedback is quick and easy to provide and can be submitted multiple times throughout the year. In keeping with the key principles of LEAD, feedback:</p>
+                    <ul class="explore-gold-points">
+                        <li>> Should be open, honest, and constructive</li>
+                        <li>> Should be provided in relation to the Gold Standard</li>
+                        <li>> Is not anonymous and should be followed up with live discussions</li>
+                    </ul>
+                </div>
+             </div>
+            </div>
+        </div>
+        
+        <div class="row wide-screen-block">
+            <div class="col-lg-4 style-cursor-pointer" ng-click="redirectTo('goals')">
+              <div  class="block-heading" align="center">Set goals</div>
+               <div class="explore-icon"><img src="content/icons/create-goals-icon.png" /></div>
+               <p>Partner goals are based on the Gold Standards that are aligned to the existing global metrics. During goal-setting you will:</p>
+                    <ul class="explore-gold-points">
+                        <li>> Add context to how you will strive toward the Gold Standard </li>
+                        <li>> Identify your areas of responsibility for the year ahead </li>
+                        <li>> Select your feedback providers</li>
+
+                    </ul>
+            </div>
+            <div class="col-lg-4 style-cursor-pointer" ng-click="redirectTo('feedback-list')">
+              <div  class="block-heading" align="center">Request feedback</div>
+              <div class="explore-icon"><img src="content/icons/request-feedback-icon.png" /></div>
+              <p>LEAD enables you to request feedback from multiple sources and allows you to add new feedback providers during the year. When requesting feedback, keep in mind that feedback providers:</p>
+                    <ul class="explore-gold-points">
+                        <li>> Should be selected based on your key areas of responsibility and roles </li>
+                        <li>> Can be 'weighed' based on your time allocation to that area of responsibility</li>
+                        <li>> Require LEAD reviewer approval</li>
+                        <li>> Anticipate 3-4 feedback providers in addition to LEAD reviewer</li>
+                    </ul>
+                
+            </div>
+            <div class="col-lg-4 style-cursor-pointer" ng-click="redirectTo('feedback-list')">
+              <div  class="block-heading" align="center">Provide feedback</div>
+              <div class="explore-icon"><img src="content/icons/provide-feedback.png" /></div>
+              <p>Feedback is quick and easy to provide and can be submitted multiple times throughout the year. In keeping with the key principles of LEAD, feedback:</p>
+                    <ul class="explore-gold-points">
+                        <li>> Should be open, honest, and constructive</li>
+                        <li>> Should be provided in relation to the Gold Standard</li>
+                        <li>> Is not anonymous and should be followed up with live discussions</li>
+                    </ul>
+            </div>
+        </div>
+        
+        
+        </div>
+    </div>
+    
+    <div class="monitor-your-performance" align="center">
+        <div class="monitor-your-performance-padding">
+        <div class="monitor-your-performance-heading">
+            View progress on your personal dashboard
+        </div>
+        <div class="monitor-icon"><img src="content/icons/monitor-performance-image.png" /></div> 
+        <div class="monitor-your-performance-content" align="center">The LEAD dashboard shows how your feedback providers view your performance in relation to the Gold Standard. As the year progresses and more feedback is received, your dashboard provides a real-time view of your performance. You can view your feedback in aggregate, or drill down into the details of each metric. At year-end, once you have completed your 
+            self-assessment, you can see your performance in relation to this, as well as your peers. The dashboard is a key enabler of the LEAD conversations that will take place throughout the year; use it to help identify areas for improvement and agree action plans with your LEAD reviewer.</div>
+            <div class="lead-base-button monitor-your-performance-button"  ng-click="redirectTo('dashboard')">Dashboard</div>
+        </div>
+    </div>
+    
+    <div class="feedback-is-key-bg fullscreen background parallax"  data-img-width="1920" data-img-height="460" data-diff="80">
+        <div class="feedback-is-key-bg-overlay" align="center">
+            <div class="feedback-is-key-heading">
+                Feedback is key
+            </div>
+            <div class="feedback-is-key-content" align="center">This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor
+            aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat
+            ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
+            cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
+            tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu
+            in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+            inceptos himenaeos. Mauris in erat justo.</div>
+            <div class="lead-base-button feedback-is-key-button"   ng-click="redirectTo('feedback')">Feedback</div>
+        </div>
+    </div>
+    
+    <footer></footer>
+    
+</div>

@@ -1,0 +1,180 @@
+<div class="dashboardContainer">
+
+    <div class="bread-crumb"><span class="style-cursor-pointer" ng-click="gotoDashboardPage('{{backPage}}')">Dashboard</span> <span>{{dashBoardData.CategoryName}}</span> &gt; <span>Comments</span></div>
+
+    <!-- <div class="page-head">Dashboard</div> -->
+    <div class="app-name">
+    {{type == 'ter'? "Global TER":''}}
+    {{type == 'sales'? "Global sales plan":''}}
+    {{type == 'margin'? "Global margin":''}}
+    </div>
+    <br>
+    <div class="page-content dashboard-comments-container">
+		        <div ng-if="spinnerCounter>0">
+		            <div id="spinnerLaunch" class="loading">Loading&#8230;</div>
+		            <div id="spinner" class="loading" style="display:none">Loading&#8230;</div>
+		        </div>
+            
+				<div class="row definition-profile-info">
+                <div class="col-md-1">
+                    <img width="72" height="72" data-ng-src="data:image/png;base64,{{currentUser.imageURL}}" data-err-src="content/images/default_picture.jpg"/>
+                </div>
+                <div class="col-md-11" align="left">
+                    {{currentUser.displayName}} - {{currentUser.rankDesc}}
+                </div>
+    		    </div>
+
+				<br>
+            	<div align="center" ng-click="gotoDashboardPage('dashboard-non-ppedd-staff')" class="lead-base-button yellow dashboard-view-comments-button back">Back</div>
+            	<br>
+            	
+            	
+        
+        
+<div class="quantitative-wrap-for-detail-page">
+        <div ng-show="type == 'ter'">
+		
+            <div class="metric-top-height">
+        <div class="progress-block-big-value" align="center">{{metricsData.GlobalTERUSDGlobal<0? "(":""}}{{metricsData.GlobalTERUSDGlobal | absNumberFormat}}{{metricsData.GlobalTERUSDGlobal<0? ")":""}} 
+        </div></div>
+		<!-- Global TER -->
+		<div class="perc-bg-height">
+		    <div class="perc-bg" align="left" ng-hide="globalTERPercentageBlock(metricsData)" >
+		        <div class="act-perc" ng-style="metricsData.cssGlobalTERPlanAchievedPct">
+		        </div>
+		    </div>
+		</div>
+		<div class="progress-block-value-text" align="center">
+		    Global TER <span ng-hide="isGlobalTERPlanPctHidden(metricsData)">plan</span> 
+		    <div align="center" ng-hide="isGlobalTERPlanPctHidden(metricsData)">{{metricsData.GlobalTERPlanUSDConst<0? "(":""}}{{metricsData.GlobalTERPlanUSDConst | absNumberFormat}}{{metricsData.GlobalTERPlanUSDConst<0? ")":""}}</div>
+		    <div ng-show="isGlobalTERPlanPctHidden(metricsData)" class="question-circle" type="button" data-toggle="popover" data-placement="top" data-content="Plan data is not available in My Business: Metrics">?</div>
+		</div>
+	    
+    </div>
+	
+	 <div ng-show="type == 'sales'">
+	 	
+	 	
+	 	
+	 					                <div class="metric-top-height">
+                                        <div class="progress-block-big-value" ng-hide="isGlobalSalesUSDHide(metricsData)" align="center">{{metricsData.GlobalSalesUSDConst<0? "(":""}}{{metricsData.GlobalSalesUSDConst | absNumberFormat }}{{metricsData.GlobalSalesUSDConst<0? ")":""}}</div>
+                                        </div>
+                                      
+                                            <div class="perc-bg-height">
+                                                <div class="perc-bg" align="left" ng-if="!checkGlobalSales(metricsData)">
+                                                    <div class="act-perc" ng-style="metricsData.cssGlobalSalesPlanAchievedPct">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                    <div class="metric-top-height-bottom">
+                                        <div class="progress-block-value-text" align="center">
+                                            Global sales <span ng-hide="isGlobalSalesPlanPctHidden(metricsData)">plan</span>
+                                            <div align="center" ng-hide="isGlobalSalesPlanPctHidden(metricsData)">{{metricsData.GlobalSalesPlanUSDConst<0? "(":""}}{{metricsData.GlobalSalesPlanUSDConst  | absNumberFormat}}{{metricsData.GlobalSalesPlanUSDConst<0? ")":""}}</div>
+
+                                            <div ng-show="isGlobalSalesPlanPctHidden(metricsData)" class="question-circle" type="button" data-toggle="popover" data-placement="top" data-content="Plan data is not available in My Business: Metrics">?</div>
+                                        </div>
+                                    	</div>
+
+                                    
+                                        <div class="progress-block-big-value" align="center" ng-hide="isGlobalPipelineHidden(metricsData)">{{metricsData.GlobalPipelineUSDConst<0? "(":""}}{{metricsData.GlobalPipelineUSDConst | absNumberFormat}}{{metricsData.GlobalPipelineUSDConst<0? ")":""}}</div>
+                                        <div class="progress-block-value-text" align="center">Weighted pipeline <div class="question-circle" type="button" data-toggle="popover" data-placement="top" data-content="Plan data is not available in My Business: Metrics">?</div></div>
+                                    
+                                        <!--<div class="donut-detail-bottom" align="center" ng-click="gotoQuantitativeDetail(metricsData, 'sales')"><div align="center" class="lead-base-button white dashboard-detail-button">Details</div></div>-->
+      </div>
+                         
+	
+	 <div ng-show="type == 'margin'">
+		<div class="progress-block-big-value" align="center" ng-hide="isGlobalMarginPctHide(metricsData)">{{metricsData.GlobalMarginPct}}</div>
+		
+		<div class="perc-bg-height">
+		    <div class="perc-bg" align="left" ng-hide="globalMarginPercentageBlock(metricsData)">
+		        <div class="act-perc" ng-style="metricsData.cssGlobalMarginPlanAchievedPct">
+		        </div>
+		    </div>
+		</div>
+		<div class="progress-block-value-text" align="center" >
+		    Global margin <span ng-hide="isGlobalMarginPlanPctHidden(metricsData)">plan</span> 
+		    <div align="center" ng-hide="isGlobalMarginPlanPctHidden(metricsData)">{{metricsData.GlobalMarginPlanPct}}</div>
+		    <div ng-show="isGlobalMarginPlanPctHidden(metricsData)" class="question-circle" type="button" data-toggle="popover" data-placement="top" data-content="Plan data is not available in My Business: Metrics">?</div>
+		</div>
+	 </div>
+            
+</div>  
+         <div class="row detail-divider"></div>
+        
+
+        <div class="row feedback-listing-row">
+
+
+            <div class="title">Feedback</div>
+            <div class="row feedback-listing-repeater" ng-repeat="data in mergedComments | orderBy : '-FeedbackSubmittedDate'">
+
+<div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-1 comments-image-width">
+                            <div class="image">
+                            <img width="41" height="41" data-ng-src="data:image/png;base64,{{data.photo}}" data-err-src="content/images/default_picture.jpg"/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div><b>{{data.userName}}</b></div>
+                            <div><b>Weighted: {{data.weightKey}}</b></div> 
+                        </div>
+                        <div class="col-md-8">
+                            {{data.FeedbackSubmittedDate | date:"dd/MMM/yyyy"}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <br>
+                        <div class="comments-detail-title-padding"><b>Comments</b></div>
+                        <div class="comments-detail-padding">
+                            <!--<div ng-bind-html="data.comments">-->
+                               
+                            <!--</div>-->
+                            
+                            <div ng-class="ng-cloak" ng-repeat="line in (data.comments | newlines) track by $index">
+		                        {{line}}
+		                       
+	                    	</div>
+
+                             <!--<div ng-show="mergedComments.length==0" class="text-size-13" align="left">-->
+                             <!--       There are no comments available.-->
+                             <!--</div>-->
+
+                        </div>
+                    </div>
+                </div>
+
+              <!--   <div class="row">
+                    <div class="image">
+                        <img height="41" weight="41" ng-src="{{data.PICTURE_URL==null || data.PICTURE_URL==''? 'content/images/default_picture.jpg' : data.PICTURE_URL }}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 name" align="left">{{data.UserName}}</div>
+                    <div class="col-md-9 date" align="left">{{data.FeedbackSubmittedDate | date:"dd/MMM/yyyy"}}</div>
+                </div>
+                <div class="row desc">
+                    <span ng-class="ng-cloak" ng-repeat="line in (data.FeedbackDescription | newlines) track by $index">
+                        {{line}}
+                        <br>
+                    </span>
+                </div> -->
+
+
+            </div>
+
+            <div ng-show="mergedComments.length==0" class="text-size-13" align="left">
+                There are no comments available.
+            </div>
+        </div>
+            	
+        		<br>
+            <div align="center" ng-click="gotoDashboardPage('dashboard-non-ppedd-staff')" class="lead-base-button yellow dashboard-view-comments-button back">Back</div>
+            <br>
+
+    </div>
+    
+    <footer></footer>
+</div>

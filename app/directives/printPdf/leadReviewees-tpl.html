@@ -1,0 +1,79 @@
+﻿<!--title-->
+<div class="row">
+    <div align="left" class="col-md-10  col-xs-10"><h3 class="print-selection-heading">LEAD reviewer report</h3></div>
+    <div align="right" class="col-md-2  col-xs-2 style-cursor-pointer" ng-click="closePrintPopup('xbutton')"><b>X</b></div>
+</div>
+<!--Report Options-->
+<br />
+<div class="row">
+    <div class="col-md-5  col-xs-5">
+        <div class="cls-margin-left-7">
+            <div>
+                <input id="include_dashboard" type="checkbox" name="revieweesOptionChkbox" ng-model="leadRevieweesForPrintOptions.isDashboard" class="checkbox-custom" ng-disabled="true"/>
+                <label for="include_dashboard" class="checkbox-custom-label print-all-chk disabled"><span class="cls-margin-left-5 font-weight-regular disabled">Include dashboard</span></label>
+            </div>
+            <div class="cls-margin-top-5">
+                <input id="include_goals" type="checkbox" name="revieweesOptionChkbox" ng-model="leadRevieweesForPrintOptions.isGoals" class="checkbox-custom" />
+                <label for="include_goals" class="checkbox-custom-label print-all-chk"><span class="cls-margin-left-5 font-weight-regular">Include goals</span></label>
+            </div>
+            <div class="cls-margin-top-5">
+                <input id="include_self" type="checkbox" name="revieweesOptionChkbox" ng-model="leadRevieweesForPrintOptions.isSelfAssessment" class="checkbox-custom" />
+                <label for="include_self" class="checkbox-custom-label print-all-chk"><span class="cls-margin-left-5 font-weight-regular">Include self-assessment</span></label>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6  col-xs-6">
+        <div>
+            <input id="include_qr" type="checkbox" name="revieweesOptionChkbox" ng-model="leadRevieweesForPrintOptions.isQualityReview" class="checkbox-custom" />
+            <label for="include_qr" class="checkbox-custom-label print-all-chk"><span class="cls-margin-left-5 font-weight-regular">Include quality review</span></label>
+        </div>
+        <div class="cls-margin-top-5">
+            <input id="include_fb" type="checkbox" name="revieweesOptionChkbox" ng-model="leadRevieweesForPrintOptions.isFeedbackReceived" class="checkbox-custom"ng-change="leadRevieweesForPrintOptions.isFeedbackReceived?leadRevieweesForPrintOptions.isHistory:leadRevieweesForPrintOptions.isHistory=false" />
+            <label for="include_fb" class="checkbox-custom-label print-all-chk"><span class="cls-margin-left-5 font-weight-regular">Include feedback received</span></label>
+        </div>
+        <div class="cls-margin-left-25 cls-margin-top-5">
+            <input id="include_history" type="checkbox" ng-model="leadRevieweesForPrintOptions.isHistory" class="checkbox-custom" ng-disabled="!leadRevieweesForPrintOptions.isFeedbackReceived" />
+            <label for="include_history" class="checkbox-custom-label print-all-chk {{leadRevieweesForPrintOptions.isFeedbackReceived? '':'disabled'}}"><span class="cls-margin-left-5 font-weight-regular {{leadRevieweesForPrintOptions.isFeedbackReceived? '':'disabled'}}">Include history</span></label>
+        </div>
+    </div>
+ </div>
+<!--Feedback selections header-->
+<br />
+<div class="row feedback-print-header">
+    <div align="left" class="col-md-12  col-xs-12">
+        <div class="col-md-1 col-xs-1">
+            &nbsp;<input id="check_All" type="checkbox" ng-model="isAllSelected" class="checkbox-custom" ng-change="selectAllLeadRevieweesForPrint(isAllSelected)"/>
+            <label for="check_All" class="checkbox-custom-label print-all-chk"></label> 
+        </div>
+        <!-- show Name only for the first rcord -->
+        <div class="col-md-11 col-xs-10">
+            Name
+        </div>
+    </div>
+    
+</div>
+<!-- Selections to print -->
+<div class="row selection-to-print">
+    <div ng-repeat="reviewees in leadRevieweesForPrint"  class="row border-line">
+        <div class="col-md-12  col-xs-12 print-each-row" ng-init="chk_id=$index" align="left">
+                    
+            <div class="col-md-1 col-xs-1">
+                &nbsp;<input id="check_{{chk_id}}" type="checkbox" name="revieweesChkbox" ng-model="reviewees.isSelected"  class="checkbox-custom" />
+                <label for="check_{{chk_id}}" class="checkbox-custom-label"></label> 
+            </div>
+            <!-- show Name only for the first rcord -->
+            <div class="col-md-11 col-xs-11">
+                <span>{{reviewees.Name}}</span>
+                
+            </div>
+
+        </div>
+        
+    </div>
+        
+    
+</div>
+<br />
+<div class="row" id="buttonsRow">
+    <span class="lead-base-button grey" ng-click="closePrintPopup('cancelbutton')">Cancel</span><span class="button-spacing"></span><span class="lead-base-button yellow {{disablePrint()?'disabled cursor-disabled':''}}" ng-click="printLeadReviewees()">Print PDF</span>
+</div>
